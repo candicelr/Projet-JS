@@ -6,21 +6,23 @@ const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w200";
 // Toute la doc de l'API est ici : https://developer.themoviedb.org/docs/getting-started
 
 // Fonction pour afficher les films dans la liste
+const disney = ["Vaiana 2","Miraculous World : Londre, la course contre le temps","Vice-Versa 2","Mufasa : Le Roi Lion","Un conte de Noël, ou presque"]
+const classique = ["Le Grinch","Transformers : Le Commencement","Garfield : Héros malgrès lui"]
+const jeunesse = ["Le Robot sauvage","Vaiana 2","Kung Fu Panda 4","Flow, le chat qui n'avait plus peur de l'eau","Ellian et le sortilège"]
+const familial = ["Tous en scène : Thriller","Ce Noël-là","Moi, moche et méchant 4"]
+const anime = ["Watchmen: Chapter II","Solo Leveling -ReAwakening-","Overlord : The Sacred Kingdom","Le Seigneur des Anneaux : La Guerre des Rohirrim","My Hero Academia: You’re Next"]
 const displayMovies = (movies) => {
   const movieList = document.getElementById("movieList");
   movieList.innerHTML = ""; // Nettoyer la liste avant d'ajouter les films
 
   movies.forEach((movie) => {
-    const li = document.createElement("li");
-    li.innerHTML = `
-          <h2>${movie.title}</h2>
-          <p>Date de sortie : ${movie.release_date}</p>
-          <p>${movie.overview || "Résumé indisponible."}</p>
+    const div = document.createElement("div");
+    div.innerHTML = `
           <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${
       movie.title
     }">
         `;
-    movieList.appendChild(li);
+    movieList.appendChild(div);
   });
 };
 
