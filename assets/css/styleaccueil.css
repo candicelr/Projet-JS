@@ -1,0 +1,45 @@
+/*Partie Candice*/
+body{
+    background-color: #190245;
+    margin: 0%;
+    padding: 0%;
+}
+#logo{
+    height: 30%;
+    width: 60%;
+}
+nav{
+    padding: 0%;
+    padding: 0%;
+}
+nav li a{
+    color: #ffffff;
+    text-decoration: none;
+}
+nav ul{
+    list-style-type: none;
+    background-color: #33058D;
+    height: 15%;
+    width: 100%;
+}
+nav ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 30px;
+    padding-right: 35px;
+    margin: 0%;
+    padding: 0%;
+    position: fixed;
+    box-shadow: ;
+}
+nav ul li{
+    display: flex;
+    justify-content: space-around;
+}
+div img{
+    width: 100%;
+}
+
+/*Partie Paul*/
