@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
     <title>Document</title>
+    <!--Ajout des liens vers les pages de style.-->
     <link rel="stylesheet" href="assets/css/styleaccueil.css">
     <link rel="stylesheet" href="assets/css/stylefavoris.css">
     <link rel="stylesheet" href="assets/css/stylesdescription.css">
     <title>CineManu</title>
 </head>
 <header>
+    <!--Barre de navigation-->
     <nav id="navigation">
         <ul>
             <li><img id="logo" src="assets/img/logo cinémanu.svg" alt="logo cinemanu"></li>
@@ -21,6 +22,7 @@
             <li><a href="#family">Familial</a></li>
             <li><a href="#animated">Animé</a></li>
             <li> <img id="wishlist" onclick="menuWishlist()" src="assets/img/coeur.svg" alt="pictogramme favoris">
+                <!--Liste des favoris-->
                 <ul id="menuBox" style="display: none">
                     <div id="list">
                         <li class="favorite">
@@ -52,20 +54,21 @@
                             </div>
                         </li>
                         <li id="more">
-                            <p>VOIR PLUS</p>
+                            <p><a href="favoris.html">VOIR PLUS</a></p>
                         </li>
                     </div>
                 </ul>
             </li>
 
     </nav>
+    <!--Image d'accueil-->
     <div>
         <img id="home" src="assets/img/image d'accueil.svg" alt="page d'accueil du CineManu">
     </div>
 </header>
 
 <body>
-
+    <!--Ajout des films par catégorie-->
     <section id="movies">
         <h1 id="classiques">Les Classiques</h1>
         <div class="posters">
@@ -146,6 +149,3 @@
     </section>
 
 </body>
-<script src="assets/js/script.js"></script>
-
-</html>

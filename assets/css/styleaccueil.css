@@ -2,7 +2,7 @@
 /*Importation de la police open sans et de la police inter.*/
 @import url('https://fonts.googleapis.com/css2?family=Irish+Grover&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Irish+Grover&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
-
+/*Définition de la couleur d'arrière plan de la page.*/
 body {
     background-color: #190245;
     margin: 0%;
@@ -13,24 +13,24 @@ body {
     height: 30%;
     width: 60%;
 }
-
+/*Suppression des marges externes et interne de la nav.*/
 nav {
     padding: 0%;
     padding: 0%;
 }
-
+/*Mise en couleur des liens de la barre de navigation et supression de leurS soulignementS.*/
 nav li a {
     color: #ffffff;
     text-decoration: none;
 }
-
+/*Suppression des points de la liste, définition de la couleur d'arrière plan, de la hauteur et de la largeur de la barre de navigation.*/ 
 nav ul {
     list-style-type: none;
     background-color: #33058D;
     height: 80px;
     width: 100%;
 }
-
+/*Placement des liens de la barre de navigation au centre de l'axe secondaire, espacé les uns des autres. Puis définition de leur taille et de leur marge interne et externe. Enfin, on fixe la barre de navigation à sa position et on rajoute un effet d'ombre.*/
 nav ul {
     display: flex;
     justify-content: space-evenly;
@@ -42,30 +42,37 @@ nav ul {
     position: fixed;
     box-shadow: 5px 5px 5px black;
 }
+/*Définition de la marge externe à droite des liens de la barre de navigation.*/
 nav ul li a{
     margin-right:60px;
 }
+/*On donne une largeur de 100% à l'image d'accueil.*/
 #home{
     width: 100%;
 }
+/*On place les affiches côte à côte et on les espace les une des autres. Puis on rajoute une marge externe en bas pour espacer les différentes catégories de films.*/
 .posters{
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 120px;
 }
+/*Ajout d'une marge externe à gauche du picto like de la wishlist*/
 #wishlist{
     margin-left: 80PX;
 }
+/*Définition de la couleur d'arrière blanc du bloc de la wishlist. Ajout d'une marge interne et d'une ombre.*/
 #list{
     background-color: #33058D;
     padding: 20px;
     box-shadow: 15px 15px 15px black;
 }
+/*Définition de la couleur et de la marge interne des paragraphes de la whishlist.*/
 #list p{
     color: white;
     padding-left: 20px;
     padding-top: 20px;
 }
+/*Défintion du style des titres.*/
 h1 {
     margin-top: 100px;
     margin-left: 90px;
@@ -82,7 +89,7 @@ h2 {
     font-family: "Open Sans", sans-serif;
     margin-bottom: 60px;
 }
-
+/*Définition de la taille, de la couleur et de la position du bloc de la wishlist*/
 #menuBox{
     height: 100px;
     width: 600px;
@@ -90,8 +97,8 @@ h2 {
     transform: translateX(-60%);
 
 }
+/*Placement des informations de la wishlist*/
 .favorite{
-    background-color: #33058D;
     display: flex;
     margin-bottom: 50px;
 }
@@ -106,20 +113,14 @@ h2 {
     width: 50px;
     margin-left: 30px;
 }
-#more p{
+/*Définition du style du bouton voir plus.*/
+#more a{
     background-color: #9238EC;
-    width: 130px;
+    width: 140px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
     padding: 10px;
     font-size: 20px;
-    font-family: "Inter", sans-serif;
-}
-#more{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 60px;
-    margin-top: -20px;
-}
+    font-family
