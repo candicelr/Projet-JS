@@ -21,7 +21,7 @@ async function allMovies() {
         myGlobalMovieList=[...data.results]
       } else {
         alert(
-          "MPas de clé API"
+          "Pas de clé API"
         );
       }
     } catch (error) {
@@ -40,8 +40,11 @@ const chercheDetails = async(id) =>{
           console.log(data2)
         let myObj = {};
         // Récupérer dans myObj les infos de data qui nous intéressent
-        myObj = {production_companies[0]}
+        let product = data2.production_companies[0]
+        myObj = {product}
+        console.log(myObj)
         return myObj
+        
     }
     catch (error) {
     console.error("Erreur lors de la récupération des films :", error);
@@ -102,7 +105,7 @@ const displayMovies = (movies) => {
              <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${
          movie.title
        }">
-           // <img onclick="likes()" src="assets/img/coeur.svg" alt="pictogramme coeur">
+           <img onclick="likes()" src="assets/img/coeur.svg" alt="pictogramme coeur">
            `;
        movieList.appendChild(div);
      });
