@@ -48,10 +48,14 @@ const displayMovies = (movies) => {
           <a><img src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${
       movie.title
     }"></a>
-        <img onclick="likes()" src="assets/img/coeur.svg" alt="pictogramme coeur">
+        <img class="favorite" onclick="likes()" src="assets/img/coeur.svg" alt="pictogramme coeur">
         `;
     movieList.appendChild(div);
-  });
+  });  
+  const likes=(movie)=>{
+    alert(movie.previousElementSibling)
+
+  }
 };
 
 // Fonction pour récupérer les films d'animations(genre=16)
@@ -72,7 +76,18 @@ async function fetchRecentMovies() {
   } catch (error) {
     console.error("Erreur lors de la récupération des films :", error);
   }
+//   const detailMovieList =(aaa)=>{
+//     for(thisMovie of aaa){
+//       let thisMovieDetail = chercheDetails(thisMovie.id);
+ 
+//     }
+// }
 }
+// const chercheDetails = async(id) =>{
+//   try{
+//       const response2 = await fetch(
+//           `${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=fr-FR`
+//         );}}
 
 // Charger les films récents au chargement de la page
 fetchRecentMovies();
@@ -81,12 +96,31 @@ fetchRecentMovies();
 const wishlist = (wishlistWindow) => {
   wishlistWindow = window.open("witchlist.html");
 };
+
 // Fonction pour le menu burger du favori sur la page d'acceuil
 const menuWishlist = () => {
   let menuBox = document.getElementById("menuBox");
   if (menuBox.style.display == "block") {
-    menuBox.style.display = "block";
-  } else {
     menuBox.style.display = "none";
+  } else {
+    menuBox.style.display = "block";
   }
 };
+
+// fonction pour afficher les films qui ont été choisi en favoris.
+// Ne met pas l'affiche dans le tableau, mais le coeur est cliquable
+const likes=()=>{
+  let listWishMovies=[]
+  for (let i=0; i<document.getElementsByClassName('favorite').length;i++){
+    document.getElementsByClassName('favorite')[i].addEventListener("click",function(){
+      affiche=this.previousElementSibling
+      for(let j=0;j<listWishMovies.length;j++){
+      if (this.previousElementSibling !== listWishMovies[j]){
+        listWishMovies.push(affiche)
+      
+      }}  
+    console.log(listWishMovies)
+    })
+  }
+
+}  
