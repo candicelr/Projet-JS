@@ -1,0 +1,125 @@
+/*Partie Candice*/
+/*Importation de la police open sans et de la police inter.*/
+@import url('https://fonts.googleapis.com/css2?family=Irish+Grover&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Irish+Grover&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+body {
+    background-color: #190245;
+    margin: 0%;
+    padding: 0%;
+}
+/* nav */
+#logo {
+    height: 30%;
+    width: 60%;
+}
+
+nav {
+    padding: 0%;
+    padding: 0%;
+}
+
+nav li a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+nav ul {
+    list-style-type: none;
+    background-color: #33058D;
+    height: 80px;
+    width: 100%;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 30px;
+    padding-right: 35px;
+    margin: 0%;
+    padding: 0%;
+    position: fixed;
+    box-shadow: 5px 5px 5px black;
+}
+nav ul li a{
+    margin-right:60px;
+}
+#home{
+    width: 100%;
+}
+.posters{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 120px;
+}
+#wishlist{
+    margin-left: 80PX;
+}
+#list{
+    background-color: #33058D;
+    padding: 20px;
+    box-shadow: 15px 15px 15px black;
+}
+#list p{
+    color: white;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+h1 {
+    margin-top: 100px;
+    margin-left: 90px;
+    color: white;
+    font-size: 30px;
+    font-family: "Open Sans", sans-serif;
+    margin-bottom: 60px;
+}
+
+h2 {
+    margin-left: 9cqb;
+    color: white;
+    font-size: 30px;
+    font-family: "Open Sans", sans-serif;
+    margin-bottom: 60px;
+}
+
+#menuBox{
+    height: 100px;
+    width: 600px;
+    background-color: #33058D;
+    transform: translateX(-60%);
+
+}
+.favorite{
+    background-color: #33058D;
+    display: flex;
+    margin-bottom: 50px;
+}
+.favorite div{
+    width: 1000px;
+    display: flex;
+}
+.more p{
+    background-color: #33058D;
+}
+.delete{
+    width: 50px;
+    margin-left: 30px;
+}
+#more p{
+    background-color: #9238EC;
+    width: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+    font-family: "Inter", sans-serif;
+}
+#more{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+    margin-top: -20px;
+}
