@@ -3,15 +3,32 @@ console.log("hello")
 const API_KEY = "ddcf0bf3717e635e5e6832d2cab2fcdf";
 const BASE_URL = "https://api.themoviedb.org/3";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w200";
+
+const categories = [{name:"movieDisney",value:13}, ]
+const myGlobalMovieList = [];
+
+
 // Toute la doc de l'API est ici : https://developer.themoviedb.org/docs/getting-started
 
 // Fonction pour afficher les films dans la liste
-const disney = ["Vaiana 2","Miraculous World : Londre, la course contre le temps","Vice-Versa 2","Mufasa : Le Roi Lion","Un conte de Noël, ou presque"]
-const classique = ["Le Grinch","Transformers : Le Commencement","Garfield : Héros malgrès lui"]
-const jeunesse = ["Le Robot sauvage","Vaiana 2","Kung Fu Panda 4","Flow, le chat qui n'avait plus peur de l'eau","Ellian et le sortilège"]
-const familial = ["Tous en scène : Thriller","Ce Noël-là","Moi, moche et méchant 4"]
-const anime = ["Watchmen: Chapter II","Solo Leveling -ReAwakening-","Overlord : The Sacred Kingdom","Le Seigneur des Anneaux : La Guerre des Rohirrim","My Hero Academia: You’re Next"]
 const displayMovies = (movies) => {
+ for (category of categories){
+  thisCategoryName = category.name
+  thisCategoryMovies = movies.filter(e=> e.genre_ids.includes(category.value))
+  //J'zai ma liste de films de la catégorie Animation
+  for (thisMovie of thisCategoryMovies){
+  //Pour chaque film, j'appelle la fonction chercheDetail(movie)
+  let myMovie = chercheDetails(thisMovie)
+
+  }
+ }
+
+  for (thisMovie of movies){
+
+  
+  const movieGenreId = movies.genre_ids}
+  
+  
   const movieList = document.getElementById("movieList");
   movieList.innerHTML = ""; // Nettoyer la liste avant d'ajouter les films
 
@@ -21,13 +38,14 @@ const displayMovies = (movies) => {
           <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${
       movie.title
     }">
+        // <img onclick="likes()" src="assets/img/coeur.svg" alt="pictogramme coeur">
         `;
     movieList.appendChild(div);
   });
-};
+}
 
 // Fonction pour récupérer les films récents
-async function fetchRecentMovies() {
+async function allMovies() {
   // le try catch pour éviter le plantage du script si le fetch échoue
   try {
     // fetch de la base theMovieDb
@@ -40,15 +58,27 @@ async function fetchRecentMovies() {
     // Appel de la fonction qui affiche les films
     if (response.status !== 401) {
       displayMovies(data.results);
-    } else {
-      alert(
-        "Message du prof aux élèves :-)\nPensez à mettre votre clé d'API en ligne 40 du code !!!\nSinon, ça ne fonctionne pas\nInstructions ligne 38 dans le commentaire."
-      );
-    }
+      // myGlobalMovieList=[...data.results]
+    }   
   } catch (error) {
     console.error("Erreur lors de la récupération des films :", error);
   }
 }
-
+allMovies()
+console.log(myGlobalMovieList)
 // Charger les films récents au chargement de la page
-fetchRecentMovies();
+
+const chercheDetails = async (id) =>{try {
+  // fetch de la base theMovieDb
+  const response2 = await fetch(
+    `${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=fr-FR`
+  );
+  // récupération de la réponse au format JSON
+  const data2 = await response2.json();
+  let myObj ={};
+  // Récupérer dans my obj les infos de data qui nous intéressent
+  
+  return myObj
+} catch (error) {
+  console.error("Erreur lors de la récupération des films :", error);
+}};
