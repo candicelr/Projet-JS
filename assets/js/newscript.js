@@ -22,11 +22,12 @@ async function allMovies() {
     );
     // récupération de la réponse au format JSON
     const data = await response.json();
-    console.log(data);
+    console.log("allMovies",data);
+    
     // Appel de la fonction qui affiche les films
     if (response.status !== 401) {
       displayMovies(data.results);
-      // myGlobalMovieList=[...data.results]
+      myGlobalMovieList.push(data.results)
     }
   } catch (error) {
     console.error("Erreur lors de la récupération des films :", error);
@@ -86,7 +87,7 @@ const displayMovies = (movies) => {
   movies.forEach((movie) => {
     const div = document.createElement("div");
     div.innerHTML = `
-             <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${
+             <img id="${movie.id}" class="affiche" src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${
       movie.title
     }">
            <img class="favorite" id="${movie.id}" onclick="likes(${
@@ -95,24 +96,58 @@ const displayMovies = (movies) => {
            `;
     movieList.appendChild(div);
   });
-  // Affichage catégories Classique si la note est supérieur à 8
+//   const div = document.createElement("div");
+//   const movieClassique = document.getElementById("movieClassique");
+//   div.innerHTML = "";
+//   let compteurClassique = 0;
+//   if (compteurClassique < 3){
+//    if (movies.vote_average > 8){
+//      movies.forEach((movie) => {
+//        div.innerHTML = `
+//        <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${movie.title}">
+//        <img onclick="likes()" src="assets/img/coeur.svg" alt="pictogramme coeur">
+//        `;
+//      movieClassique.appendChild(div);
+//      });
+//    };
+//    compteurClassique++
+//   };
 
-  
-  //  const movieClassique = document.getElementById("movieClassique");
-  //  div.innerHTML = "";
-  //  let compteurClassique = 0;
-  //  if (compteurClassique < 3){
-  //   if (movies.vote_average > 8){
-  //     movies.forEach((movie) => {
-  //       div.innerHTML = `
-  //       <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${movie.title}">
-  //       <img onclick="likes()" src="assets/img/coeur.svg" alt="pictogramme coeur">
-  //       `;
-  //     movieClassique.appendChild(div);
-  //     })
-  //   }
-  //   compteurClassique++
-  //  }
+// // Affichage catégorie Jeunesse et Familial
+//  const movieJeunesse = document.getElementById("movieJeunesse");
+//  const movieFamilial = document.getElementById("movieFamilial");
+//  div.innerHTML = "";
+//  div.innerHTML = "";
+//  let compteurJeunesse = 0 ;
+//  let compteurFamilial = 0;
+//  if (compteurJeunesse < 3){
+//    for (let i=0; i< (movies.genre_ids).length; i++ ){
+//      if (movies.genre_ids[i] === 10751){
+//          movies.forEach((movie)=> {
+//          div.innerHTML = `
+//          <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${movie.title}">
+//          <img onclick="likes()" src="assets/img/coeur.svg" alt="pictogramme coeur">
+//          `;
+//          movieJeunesse.appendChild(div)
+//        });
+//      };
+//    };
+//    compteurJeunesse++
+//  }
+//  else if (compteurFamilial < 3){
+//    for (let i=0; i< (movies.genre_ids).length; i++ ){
+//      if (movies.genre_ids[i] === 10751){
+//          movies.forEach((movie)=> {
+//          div.innerHTML = `
+//          <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${movie.title}">
+//          <img onclick="likes()" src="assets/img/coeur.svg" alt="pictogramme coeur">
+//          `;
+//          movieFamilial.appendChild(div)
+//        });
+//      };
+//    };
+//    compteurFamilial++
+//  };
 };
 // Pour aller sur la page films favoris en  cliquant sur "Voir Plus"
 const wishlist = (wishlistWindow) => {
@@ -133,11 +168,12 @@ const likes = (movieId) => {
   const changeColorHeart = () => {
     //On crée une variable image//
     let image = document.querySelectorAll(".favorite");
+    let afficheWishlist=document.querySelector(".affiche")
     //On crée une variable pour le coeur blanc//
     let whiteHeart = "assets/img/coeur.svg";
     //On crée une variable pour le coeur violet//
     let colorHeart = "assets/img/heartColor.svg";
-
+    
     image.forEach((image) => {
       //On rajoute une évenement au clique sur l'image//
       image.addEventListener("click", function () {
@@ -145,6 +181,13 @@ const likes = (movieId) => {
         if (image.src.includes(whiteHeart)) {
           //alors on affiche le coeur violet//
           image.src = colorHeart;
+          // film={
+          //   affiche: IMAGE_BASE_URL + myGlobalMovieList.poster_path,
+          //   nom:myGlobalMovieList.title,
+          // }
+          // listWishMovies.push(film)
+
+          
           //Sinon on affiche le coeur blanc
         } else {
           image.src = whiteHeart;
@@ -154,3 +197,4 @@ const likes = (movieId) => {
   };
   changeColorHeart();
 };
+console.log("tous mes films:" ,myGlobalMovieList,listWishMovies)
