@@ -2,33 +2,83 @@ const API_KEY = "ddcf0bf3717e635e5e6832d2cab2fcdf";
 const BASE_URL = "https://api.themoviedb.org/3";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w200";
 
-const categories = [{name:"Walt Disney Pictures",value:2},{name:"movieClassique",value:0},{name:"movieJeunesse",value:2},{name:"movieFamilial",value:3},{name:"movieAnime",value:4}]
+const categories = [{name:"Walt Disney Pictures",value:2},{name:"movieClassique",value:0},{name:"movieJeunesse",value:10751},{name:"movieFamilial",value:10751},{name:"movieAnime",value:[28, 12, 14, 16]}]
 
 const myGlobalMovieList = [];
 const wishlist =[];
-
-// Fonction pour récupérer les films récents
-async function allMovies() {
-    try {
-      // fetch de la base theMovieDb
-      const response = await fetch(
-        `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=fr-FR&page=1&with_genres=16`
-      );
-      // récupération de la réponse au format JSON
-      const data = await response.json();
-      console.log(data);
-      // Appel de la fonction qui affiche les films
-      if (response.status !== 401) {
-        myGlobalMovieList=[...data.results]
-      } else {
-        alert(
-          "Pas de clé API"
-        );
-      }
-    } catch (error) {
-      console.error("Erreur lors de la récupération des films :", error);
-    }
+const displayMovies = (movies) => {
+  for (category of categories){
+   thisCategoryName = category.name
+   thisCategoryMovies = movies.filter(e=> e.genre_ids.includes(category.value))
+   //J'ai ma liste de films de la catégorie Animation
+   for (thisMovie of thisCategoryMovies){
+   //Pour chaque film, j'appelle la fonction chercheDetail(movie)
+   let myMovie = detailMovieList(thisMovie)
+ 
+   }
   }
+ 
+   for (thisMovie of movies){
+ 
+   
+   const movieGenreId = movies.genre_ids}
+   
+  //  Exemple pour affichage des film
+   const movieList = document.getElementById("movieList");
+   movieList.innerHTML = ""; // Nettoyer la liste avant d'ajouter les films
+ 
+   movies.forEach((movie) => {
+     const div = document.createElement("div");
+     div.innerHTML = `
+           <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${
+       movie.title
+     }">
+         <img onclick="likes()" src="assets/img/coeur.svg" alt="pictogramme coeur">
+         `;
+     movieList.appendChild(div);
+   });
+// Affichage catégories Classique si la note est supérieur à 8
+
+
+  //  const movieClassique = document.getElementById("movieClassique");
+  //  div.innerHTML = "";
+  //  let compteurClassique = 0;
+  //  if (compteurClassique < 3){
+  //   if (movies.vote_average > 8){
+  //     movies.forEach((movie) => {
+  //       div.innerHTML = `
+  //       <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${movie.title}">
+  //       <img onclick="likes()" src="assets/img/coeur.svg" alt="pictogramme coeur">
+  //       `;
+  //     movieClassique.appendChild(div);
+  //     })
+  //   }
+  //   compteurClassique++
+  //  }
+}
+
+// Fonction pour récupérer les films récents et de genre d'animation !!
+async function allMovies() {
+  // le try catch pour éviter le plantage du script si le fetch échoue
+  try {
+    // fetch de la base theMovieDb
+    const response = await fetch(
+      `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=fr-FR&page=1&with_genres=16`
+    );
+    // récupération de la réponse au format JSON
+    const data = await response.json();
+    console.log(data);
+    // Appel de la fonction qui affiche les films
+    if (response.status !== 401) {
+      displayMovies(data.results);
+      // myGlobalMovieList=[...data.results]
+    }   
+  } catch (error) {
+    console.error("Erreur lors de la récupération des films :", error);
+  }
+}
+allMovies()
+
 
 //Détail à rajouter dans myGlobalMovieList
 
@@ -52,63 +102,14 @@ const chercheDetails = async(id) =>{
   }};
 console.log(chercheDetails(1241982));
   
-async function allMovies() {
-    // le try catch pour éviter le plantage du script si le fetch échoue
-    try {
-      // fetch de la base theMovieDb
-      const response = await fetch(
-        `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=fr-FR&page=1&with_genres=16`
-      );
-      // récupération de la réponse au format JSON
-      const data = await response.json();
-      console.log(data);
-      // Appel de la fonction qui affiche les films
-      if (response.status !== 401) {
-        displayMovies(data.results);
-        // myGlobalMovieList=[...data.results]
-      }   
-    } catch (error) {
-      console.error("Erreur lors de la récupération des films :", error);
-    }
-  }
-  allMovies()
 
+// Fonction qui permet d'utiliser la compagnie du film
 const detailMovieList =(aaa)=>{
     for(thisMovie of aaa){
       let thisMovieDetail = chercheDetails(thisMovie.id);
-      
+      aaa[thisMovie] = thisMovieDetail
+    }
+}
+// detailMovieList(allMovies())
 
-    }
-}
-const displayMovies = (movies) => {
-    for (category of categories){
-     thisCategoryName = category.name
-     thisCategoryMovies = movies.filter(e=> e.genre_ids.includes(category.value))
-     //J'zai ma liste de films de la catégorie Animation
-     for (thisMovie of thisCategoryMovies){
-     //Pour chaque film, j'appelle la fonction chercheDetail(movie)
-     let myMovie = detailMovieList(thisMovie)
-   
-     }
-    }
-   
-     for (thisMovie of movies){
-   
-     
-     const movieGenreId = movies.genre_ids}
-     
-     
-     const movieList = document.getElementById("movieList");
-     movieList.innerHTML = ""; // Nettoyer la liste avant d'ajouter les films
-   
-     movies.forEach((movie) => {
-       const div = document.createElement("div");
-       div.innerHTML = `
-             <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${
-         movie.title
-       }">
-           <img onclick="likes()" src="assets/img/coeur.svg" alt="pictogramme coeur">
-           `;
-       movieList.appendChild(div);
-     });
-}
+
