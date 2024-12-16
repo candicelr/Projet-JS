@@ -2,9 +2,10 @@ const API_KEY = "ddcf0bf3717e635e5e6832d2cab2fcdf";
 const BASE_URL = "https://api.themoviedb.org/3";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w200";
 
-const categories = [{name:"movieDisney",value:1},{name:"movieClassique",value:0},{name:"movieJeunesse",value:2},{name:"movieFamilial",value:3},{name:"movieAnime",value:4}]
+const categories = [{name:"Walt Disney Pictures",value:2},{name:"movieClassique",value:0},{name:"movieJeunesse",value:2},{name:"movieFamilial",value:3},{name:"movieAnime",value:4}]
 
 const myGlobalMovieList = [];
+const wishlist =[];
 
 // Fonction pour récupérer les films récents
 async function allMovies() {
@@ -40,16 +41,16 @@ const chercheDetails = async(id) =>{
           console.log(data2)
         let myObj = {};
         // Récupérer dans myObj les infos de data qui nous intéressent
-        let product = data2.production_companies[0]
-        myObj = {product}
-        console.log(myObj)
+        
+        myObj.product = [...data2.production_companies]
+        console.log("mes données",myObj)
         return myObj
         
     }
     catch (error) {
     console.error("Erreur lors de la récupération des films :", error);
   }};
-console.log(chercheDetails(1299652));
+console.log(chercheDetails(1241982));
   
 async function allMovies() {
     // le try catch pour éviter le plantage du script si le fetch échoue
@@ -75,6 +76,7 @@ async function allMovies() {
 const detailMovieList =(aaa)=>{
     for(thisMovie of aaa){
       let thisMovieDetail = chercheDetails(thisMovie.id);
+      
 
     }
 }
@@ -85,7 +87,7 @@ const displayMovies = (movies) => {
      //J'zai ma liste de films de la catégorie Animation
      for (thisMovie of thisCategoryMovies){
      //Pour chaque film, j'appelle la fonction chercheDetail(movie)
-     let myMovie = chercheDetails(thisMovie)
+     let myMovie = detailMovieList(thisMovie)
    
      }
     }
