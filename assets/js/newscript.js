@@ -56,8 +56,8 @@ const chercheDetails = async (id) => {
 console.log(chercheDetails(1241982));
 
 // Fonction qui permet d'utiliser la compagnie du film
-const detailMovieList =(aaa)=>{
-  for(thisMovie of aaa){
+const detailMovieList = (aaa) => {
+  for (thisMovie of aaa) {
     let thisMovieDetail = chercheDetails(thisMovie.id);
     aaa[thisMovie] = thisMovieDetail
   }
@@ -86,18 +86,14 @@ const displayMovies = (movies) => {
   movies.forEach((movie) => {
     const div = document.createElement("div");
     div.innerHTML = `
-             <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${
-      movie.title
-    }">
-           <img class="favorite" id="${movie.id}" onclick="likes(${
-      movie.id
-    })" src="assets/img/coeur.svg" alt="pictogramme coeur">
+             <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${movie.title}">
+           <img class="favorite" id="${movie.id}" onclick="likes(${movie.id})" src="assets/img/coeur.svg" alt="pictogramme coeur">
            `;
     movieList.appendChild(div);
   });
   // Affichage catégories Classique si la note est supérieur à 8
 
-  
+
   //  const movieClassique = document.getElementById("movieClassique");
   //  div.innerHTML = "";
   //  let compteurClassique = 0;
@@ -140,17 +136,89 @@ const likes = (movieId) => {
 
     image.forEach((image) => {
       //On rajoute une évenement au clique sur l'image//
-      image.addEventListener("click", function () {
-        //si l'image cliqué est le coeur blanc//
-        if (image.src.includes(whiteHeart)) {
-          //alors on affiche le coeur violet//
-          image.src = colorHeart;
-          //Sinon on affiche le coeur blanc
-        } else {
-          image.src = whiteHeart;
-        }
-      });
+      //si l'image cliqué est le coeur blanc//
+      if (image.src.includes(whiteHeart)) {
+        //alors on affiche le coeur violet//
+        image.src = colorHeart;
+        //Sinon on affiche le coeur blanc
+      } else {
+        image.src = whiteHeart;
+      }
     });
   };
   changeColorHeart();
 };
+
+
+
+
+
+
+
+//Récuperer l'ID pour le mettre sur l'affiche (morceau de html) la deuxième c'est le coeur (recup son id) et le mettre sur l'affiche. Comparer cet ID avec l'ID des autres films. Ensuite créer la page -> récuperer les infos dans le tableau result.
+
+
+//   if (heartImage.src.includes(whiteHeart)) {
+//     heartImage.src = purpleHeart;
+//     // Appeler la fonction pour afficher les infos du film
+//     await afficheDetails(movieId);
+//   } else {
+//     heartImage.src = whiteHeart;
+//     // Supprimer l'affichage si nécessaire (optionnel)
+//     supprimeDetails(movieId);
+//   }
+// };
+// const afficheDetails = async (movieId) => {
+//   try {
+//     const response = await fetch(
+//     );
+//     const movie = await response.json();
+
+//     // Ajouter les informations sur la page
+const description = (abc) => {
+  abc = window.open("description.html");
+};
+const container = document.getElementById("movieList");
+const detailDiv = document.createElement("div");
+detailDiv.id = `details-${movieId}`; // ID unique pour pouvoir supprimer ou modifier
+detailDiv.classList.add("movie-details");
+detailDiv.innerHTML = `
+      <h3>${movie.title}</h3>
+      <img src="${IMAGE_BASE_URL+movie.poster_path}" alt="Affiche de ${movie.title}">
+      <div>
+      <p>"<strong>Date de sortie:</strong> ${release_date}"</p>
+      <p>"<strong>Durée: </strong>${runtime} minutes"</p>
+      <p>"<strong>Langue: </strong>${originial_language}"</p>
+      <p>"<strong>Status: </strong>${vote_count}"</p>
+      <p>"<strong>Note: </strong>${vote_average}"</p>
+      <p>"<strong>Pays de production: </strong>${origin_country}"</p>
+      </div>
+      <p>${movie.overview}</p>
+            
+             
+    `;
+
+//     container.appendChild(detailDiv);
+//   } catch (error) {
+//     console.error("Erreur lors de la récupération des détails du film :", error);
+//   }
+// };
+// const supprimeDetails = (movieId) => {
+//   const detailDiv = document.getElementById(`details-${movieId}`);
+//   if (detailDiv) {
+//     detailDiv.remove();
+//   }
+// };
+// const displayMovies = (movies) => {
+//   const movieList = document.getElementById("movieList");
+//   movieList.innerHTML = ""; // Nettoyer la liste avant d'ajouter les films
+
+//   movies.forEach((movie) => {
+//     const div = document.createElement("div");
+//     div.innerHTML = `
+//       <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${movie.title}">
+//       <img class="favorite" id="${movie.id}" onclick="likes(${movie.id})" src="assets/img/coeur.svg" alt="pictogramme coeur">
+//     `;
+//     movieList.appendChild(div);
+//   });
+// };
