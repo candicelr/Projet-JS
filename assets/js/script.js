@@ -52,3 +52,10 @@ async function fetchRecentMovies() {
 
 // Charger les films récents au chargement de la page
 fetchRecentMovies();
+
+
+
+
+
+
+// description
