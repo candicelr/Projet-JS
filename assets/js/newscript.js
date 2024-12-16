@@ -87,11 +87,8 @@ const displayMovies = (movies) => {
     const div = document.createElement("div");
     div.innerHTML = `
              <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${
-      movie.title
-    }">
-           <img class="favorite" id="${movie.id}" onclick="likes(${
-      movie.id
-    })" src="assets/img/coeur.svg" alt="pictogramme coeur">
+      movie.title}">
+           <img class="favorite" id="${movie.id}" onclick="likes(${movie.id})" src="assets/img/coeur.svg" alt="pictogramme coeur">
            `;
     movieList.appendChild(div);
   });
@@ -154,3 +151,11 @@ const likes = (movieId) => {
   };
   changeColorHeart();
 };
+
+
+
+
+
+
+
+
