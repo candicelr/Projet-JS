@@ -4,14 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
     <title>Document</title>
 </head>
 <body>
     <nav>
-        <img src="assets/img/logo cinémanu.svg" alt="logo cinemanu">
+        <img onclick=witchlist() src="assets/img/logo cinémanu.svg" alt="logo cinemanu">
         <ul>
 
         </ul>
+        <!-- Menu burger pour les favoris -->
+        <img id="wishlist" onclick="menuWishlist()" src="assets/img/coeur.svg" alt="pictogramme favoris">
+        <div id="menuBox" style="display: none">
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam impedit itaque non, perferendis obcaecati adipisci omnis atque tempore quidem totam voluptatem quas laudantium autem quia neque. Blanditiis at quasi cumque!</p>
+        </div>
     </nav>
     <div id="movieList">
         
