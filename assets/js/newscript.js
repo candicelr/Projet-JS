@@ -40,22 +40,82 @@ const displayMovies = (movies) => {
 // Affichage catégories Classique si la note est supérieur à 8
 
 
-  //  const movieClassique = document.getElementById("movieClassique");
-  //  div.innerHTML = "";
-  //  let compteurClassique = 0;
-  //  if (compteurClassique < 3){
-  //   if (movies.vote_average > 8){
-  //     movies.forEach((movie) => {
-  //       div.innerHTML = `
-  //       <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${movie.title}">
-  //       <img onclick="likes()" src="assets/img/coeur.svg" alt="pictogramme coeur">
-  //       `;
-  //     movieClassique.appendChild(div);
-  //     })
-  //   }
-  //   compteurClassique++
-  //  }
-}
+   const movieClassique = document.getElementById("movieClassique");
+   div.innerHTML = "";
+   
+   let compteurClassique = 0;
+   if (compteurClassique < 3){
+    if (movies.vote_average > 8){
+      movies.forEach((movie) => {
+        const div = document.createElement("div");
+        div.innerHTML = `
+        <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${movie.title}">
+        <img onclick="likes()" src="assets/img/coeur.svg" alt="pictogramme coeur">
+        `;
+      movieClassique.appendChild(div);
+      });
+    };
+    compteurClassique++
+   };
+
+// Affichage catégorie Jeunesse et Familial 
+  const movieJeunesse = document.getElementById("movieJeunesse");
+  const movieFamilial = document.getElementById("movieFamilial");
+  div.innerHTML = "";
+  div.innerHTML = "";
+  let compteurJeunesse = 0 ;
+  let compteurFamilial = 0;
+  if (compteurJeunesse < 3){
+    for (let i=0; i< (movies.genre_ids).length; i++ ){
+      if (movies.genre_ids[i] === 10751){
+          movies.forEach((movie)=> {
+          const div = document.createElement("div");
+          div.innerHTML = `
+          <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${movie.title}">
+          <img onclick="likes()" src="assets/img/coeur.svg" alt="pictogramme coeur">
+          `;
+          movieJeunesse.appendChild(div)
+        });
+      };
+    };
+    compteurJeunesse++ 
+  }
+  else if (compteurFamilial < 3){
+    for (let i=0; i< (movies.genre_ids).length; i++ ){
+      if (movies.genre_ids[i] === 10751){
+          movies.forEach((movie)=> {
+            const div = document.createElement("div");
+          div.innerHTML = `
+          <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${movie.title}">
+          <img onclick="likes()" src="assets/img/coeur.svg" alt="pictogramme coeur">
+          `;
+          movieFamilial.appendChild(div)
+        });
+      };
+    };
+    compteurFamilial++
+  };
+
+
+// Affichage categorie Disney
+
+    // const movieDisney = document.getElementById("movieFamilial");
+    // div.innerHTML = "";
+    // let compteurDisney = 0;
+    // if (compteurDisney < 3){
+    //   if (){
+    //     movies.forEach((movie)=> {
+    //     const div = document.createElement("div");
+    //       div.innerHTML = `
+    //         <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${movie.title}">
+    //         <img onclick="likes()" src="assets/img/coeur.svg" alt="pictogramme coeur">
+    //         `;
+    //         movieDisney.appendChild(div)
+    //     })
+    //   };
+    //   compteurDisney ++
+    // };
+};
 
 // Fonction pour récupérer les films récents et de genre d'animation !!
 async function allMovies() {
@@ -71,15 +131,14 @@ async function allMovies() {
     // Appel de la fonction qui affiche les films
     if (response.status !== 401) {
       displayMovies(data.results);
-      // myGlobalMovieList=[...data.results]
+      myGlobalMovieList.push(data.results)
     }   
   } catch (error) {
     console.error("Erreur lors de la récupération des films :", error);
   }
 }
 allMovies()
-
-
+console.log("tout mes films",myGlobalMovieList)
 //Détail à rajouter dans myGlobalMovieList
 
 const chercheDetails = async(id) =>{
