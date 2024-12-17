@@ -162,6 +162,7 @@ const menuWishlist = () => {
     menuBox.style.display = "block";
   }
 };
+
 let listWishMovies = [];
 const likes = (movieId) => {
   //Fonction qui permet de changer la couleur du coeur lorsqu'on clique dessus//
@@ -181,13 +182,7 @@ const likes = (movieId) => {
         if (image.src.includes(whiteHeart)) {
           //alors on affiche le coeur violet//
           image.src = colorHeart;
-          // film={
-          //   affiche: IMAGE_BASE_URL + myGlobalMovieList.poster_path,
-          //   nom:myGlobalMovieList.title,
-          // }
-          // listWishMovies.push(film)
-
-          
+                       
           //Sinon on affiche le coeur blanc
         } else {
           image.src = whiteHeart;
@@ -196,5 +191,18 @@ const likes = (movieId) => {
     });
   };
   changeColorHeart();
+  // for (let i=0; i>myGlobalMovieList.length;i++){
+//   console.log("affiche",myGlobalMovieList[i].title)
+//   if (myGlobalMovieList[i].id===movieId){
+    
+//     let film={
+//       poster:myGlobalMovieList[i].poster_path,
+//       name:myGlobalMovieList[i].title,
+//     }
+//     listWishMovies.push(film)
+//   }
+// }  
 };
-console.log("tous mes films:" ,myGlobalMovieList,listWishMovies)
+   
+console.log("tous mes films:" ,myGlobalMovieList)
+console.log("listWish",listWishMovies)
