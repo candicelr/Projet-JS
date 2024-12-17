@@ -149,60 +149,63 @@ const displayMovies = (movies) => {
 //    compteurFamilial++
 //  };
 };
-// Pour aller sur la page films favoris en  cliquant sur "Voir Plus"
-const wishlist = (wishlistWindow) => {
-  wishlistWindow = window.open("wishlist.html");
-};
-// Fonction pour le menu burger du favori sur la page d'acceuil
-const menuWishlist = () => {
-  let menuBox = document.getElementById("menuBox");
-  if (menuBox.style.display == "block") {
-    menuBox.style.display = "none";
-  } else {
-    menuBox.style.display = "block";
-  }
+
+// // Fonction pour le menu burger du favori sur la page d'acceuil
+// const menuWishlist = () => {
+//   let menuBox = document.getElementById("menuBox");
+//   if (menuBox.style.display == "block") {
+//     menuBox.style.display = "none";
+//   } else {
+//     menuBox.style.display = "block";
+//   }
+// };
+let listWishMovies = [];  // Liste des films favoris
+
+// Fonction pour gérer le changement de couleur du cœur et ajouter/supprimer des films de la liste des favoris
+const likes = (movieId) => {
+  // Fonction qui change la couleur du cœur et gère l'ajout/suppression de films des favoris
+  const changeColorHeart = (image, movieId) => {
+    const whiteHeart = "assets/img/coeur.svg";
+    const colorHeart = "assets/img/heartColor.svg";
+    
+    // Si le cœur est blanc, on le met en violet (ajout aux favoris)
+    if (image.src.includes(whiteHeart)) {
+      image.src = colorHeart;
+      addToWishlist(movieId);  // Ajout du film à la liste des favoris
+    } else {
+      image.src = whiteHeart;
+      removeFromWishlist(movieId);  // Retrait du film de la liste des favoris
+    }
+  };
+
+  // Fonction pour ajouter un film à la liste des favoris
+  const addToWishlist = (movieId) => {
+    const movie = myGlobalMovieList.flat().find(movie => movie.id === movieId);  // Recherche le film dans la liste globale
+    if (movie && !listWishMovies.includes(movie)) {  // Si le film n'est pas déjà dans les favoris
+      listWishMovies.push(movie);  // Ajouter à la liste des favoris
+      console.log("Film ajouté aux favoris:", movie);
+    }
+  };
+
+  // Fonction pour retirer un film de la liste des favoris
+  const removeFromWishlist = (movieId) => {
+    listWishMovies = listWishMovies.filter(movie => movie.id !== movieId);  // Filtrer pour retirer le film
+    console.log("Film retiré des favoris:", movieId);
+  };
+
+  // Recherche tous les cœurs sur la page et change la couleur du cœur correspondant au film cliqué
+  const heartIcons = document.querySelectorAll(".favorite");
+  heartIcons.forEach((icon) => {
+    if (icon.id == movieId) {  // Trouver l'icône du cœur du film cliqué
+      icon.addEventListener("click", () => changeColorHeart(icon, movieId));
+    }
+  });
+}
+// Fonction pour aller à la page des favoris
+const wishlist = () => {
+  localStorage.setItem('wishlist', JSON.stringify(listWishMovies)); // Sauvegarder la wishlist dans le localStorage
+  window.location.href = 'wishlist.html'; // Aller à la page des favoris
 };
 
-let listWishMovies = [];
-const likes = (movieId) => {
-  //Fonction qui permet de changer la couleur du coeur lorsqu'on clique dessus//
-  const changeColorHeart = () => {
-    //On crée une variable image//
-    let image = document.querySelectorAll(".favorite");
-    let afficheWishlist=document.querySelector(".affiche")
-    //On crée une variable pour le coeur blanc//
-    let whiteHeart = "assets/img/coeur.svg";
-    //On crée une variable pour le coeur violet//
-    let colorHeart = "assets/img/heartColor.svg";
-    
-    image.forEach((image) => {
-      //On rajoute une évenement au clique sur l'image//
-      image.addEventListener("click", function () {
-        //si l'image cliqué est le coeur blanc//
-        if (image.src.includes(whiteHeart)) {
-          //alors on affiche le coeur violet//
-          image.src = colorHeart;
-                       
-          //Sinon on affiche le coeur blanc
-        } else {
-          image.src = whiteHeart;
-        }
-      });
-    });
-  };
-  changeColorHeart();
-  // for (let i=0; i>myGlobalMovieList.length;i++){
-//   console.log("affiche",myGlobalMovieList[i].title)
-//   if (myGlobalMovieList[i].id===movieId){
-    
-//     let film={
-//       poster:myGlobalMovieList[i].poster_path,
-//       name:myGlobalMovieList[i].title,
-//     }
-//     listWishMovies.push(film)
-//   }
-// }  
-};
-   
-console.log("tous mes films:" ,myGlobalMovieList)
-console.log("listWish",listWishMovies)
+// Appel à la fonction pour charger les films
+allMovies();
