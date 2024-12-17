@@ -117,26 +117,6 @@ async function description(movieId) {
     existingDetail.remove(); // Supprime les détails existants avant d'ajouter les nouveaux
 
   }
- 
-  const container = document.getElementById("movieList");
- 
-  const detailDiv = document.createElement("div");
-
-  detailDiv.id = `details-${movieId}`;  // Ajouter un ID unique pour pouvoir gérer plusieurs films
-
-  detailDiv.classList.add("movie-details");
- 
-  detailDiv.innerHTML = `
-<h3>Détails du film</h3>
-<p><strong>Date de sortie:</strong> ${movieDetails.releaseDate}</p>
-<p><strong>Durée:</strong> ${movieDetails.runtime} minutes</p>
-<p><strong>Langue:</strong> ${movieDetails.originalLanguage}</p>
-<p><strong>Note moyenne:</strong> ${movieDetails.voteAverage}</p>
-<p><strong>Résumé:</strong> ${movieDetails.overview}</p>
-
-  `;
- 
-  container.appendChild(detailDiv);
 
 }
  
@@ -151,73 +131,6 @@ function likes(movieId) {
   } else {
     heartImage.src = whiteHeart;
   }
-}
- 
-// Fonction pour afficher les détails d'un film
-async function description(movieId) {
-  const movieDetails = await chercheDetails(movieId);
-  if (!movieDetails) return;
- 
-  const container = document.getElementById("movieList");
-  const detailDiv = document.createElement("div");
-  detailDiv.classList.add("movie-details");
- 
-  detailDiv.innerHTML = `
-<h3>Détails du film</h3>
-<p><strong>Date de sortie:</strong> ${movieDetails.releaseDate}</p>
-<p><strong>Durée:</strong> ${movieDetails.runtime} minutes</p>
-<p><strong>Langue:</strong> ${movieDetails.originalLanguage}</p>
-<p><strong>Note moyenne:</strong> ${movieDetails.voteAverage} (${movieDetails.voteCount} votes)</p>
-<p><strong>Résumé:</strong> ${movieDetails.overview}</p>
-  `;
- 
-  container.appendChild(detailDiv);
-}
- 
-// Fonction pour récupérer les bandes-annonces
-async function fetchMovieTrailers(movieId) {
-  try {
-    const response = await fetch(
-      `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=fr-FR&append_to_response=videos`
-    );
- 
-    if (!response.ok) throw new Error(`Erreur API: ${response.status}`);
- 
-    const data = await response.json();
-    const trailers = data.videos.results.filter(
-      (video) => video.type === "Trailer" && video.site === "YouTube"
-    );
- 
-    return trailers;
-  } catch (error) {
-    console.error("Erreur lors de la récupération des bandes-annonces:", error);
-    return [];
-  }
-}
- 
-// Fonction pour afficher les bandes-annonces
-async function displayMovieTrailers(movieId) {
-  const trailerContainer = document.getElementById("trailerContainer");
-  trailerContainer.innerHTML = "";
- 
-  const trailers = await fetchMovieTrailers(movieId);
- 
-  if (trailers.length === 0) {
-    trailerContainer.innerHTML = `<p>Aucune bande-annonce disponible pour ce film.</p>`;
-    return;
-  }
- 
-  trailers.forEach((trailer) => {
-    const iframe = document.createElement("iframe");
-    iframe.width = "560";
-    iframe.height = "315";
-    iframe.src = `https://www.youtube.com/embed/${trailer.key}`;
-    iframe.title = trailer.name;
-    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-    iframe.allowFullscreen = true;
- 
-    trailerContainer.appendChild(iframe);
-  });
 }
 
 // Charger les films au démarrage
