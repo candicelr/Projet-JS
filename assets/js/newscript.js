@@ -12,7 +12,6 @@ const categories = [
 
 const myGlobalMovieList = [];
 
-
 // Fonction pour récupérer les films récents
 async function allMovies() {
   // le try catch pour éviter le plantage du script si le fetch échoue
@@ -125,25 +124,35 @@ const menuWishlist = () => {
     menuBox.style.display = "block";
   }
 };
+let listWishMovies = [];
+const likes = (movieId) => {
+  //Fonction qui permet de changer la couleur du coeur lorsqu'on clique dessus//
+  const changeColorHeart = () => {
+    //On crée une variable image//
+    let image = document.querySelectorAll(".favorite");
+    //On crée une variable pour le coeur blanc//
+    let whiteHeart = "assets/img/coeur.svg";
+    //On crée une variable pour le coeur violet//
+    let colorHeart = "assets/img/heartColor.svg";
 
-// Gestionnaire d'événement pour les cœurs
-document.addEventListener("click", (event) => {
-    if (event.target.classList.contains("favorite")) {
-        const movieId = event.target.dataset.movieId; // Récupère l'ID du film
-        toggleLike(movieId, event.target); // Passe le cœur à aimé/non aimé
-    }
-});
-
-// Fonction pour gérer les likes
-const toggleLike = (movieId, heartElement) => {
-    if (!listWishMovies.includes(movieId)) {
-        listWishMovies.push(movieId); // Ajoute le film aux favoris
-        heartElement.src = "assets/img/heartColor.svg"; // Change le cœur en violet
-    } else {
-        listWishMovies = listWishMovies.filter((id) => id !== movieId); // Supprime le film des favoris
-        heartElement.src = "assets/img/coeur.svg"; // Remet le cœur blanc
-    }
+    image.forEach((image) => {
+      //On rajoute une évenement au clique sur l'image//
+      image.addEventListener("click", function () {
+        //si l'image cliqué est le coeur blanc//
+        if (image.src.includes(whiteHeart)) {
+          //alors on affiche le coeur violet//
+          image.src = colorHeart;
+          //Sinon on affiche le coeur blanc
+        } else {
+          image.src = whiteHeart;
+        }
+      });
+    });
+  };
+  changeColorHeart();
 };
+
+
 
 
 

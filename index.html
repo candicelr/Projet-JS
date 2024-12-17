@@ -1,151 +1,50 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!--Ajout des liens vers les pages de style.-->
     <link rel="stylesheet" href="assets/css/styleaccueil.css">
-    <link rel="stylesheet" href="assets/css/stylefavoris.css">
-    <link rel="stylesheet" href="assets/css/stylesdescription.css">
-    <title>CineManu</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<header>
-    <!--Barre de navigation-->
-    <nav id="navigation">
-        <ul>
-            <li><img id="logo" src="assets/img/logo cinémanu.svg" alt="logo cinemanu"></li>
-            <li><a href="#classiques">Les classiques</a></li>
-            <li><a href="#youth">Jeunesse</a></li>
-            <li><a href="#disney">Disney</a></li>
-            <li><a href="#family">Familial</a></li>
-            <li><a href="#animated">Animé</a></li>
-            <li> <img id="wishlist" onclick="menuWishlist()" src="assets/img/coeur.svg" alt="pictogramme favoris">
-                <!--Liste des favoris-->
-                <ul id="menuBox" style="display: none">
-                    <div id="list">
-                        <li class="favorite">
-                            <div>
-                                <img src="assets/img/Monstre academy.svg" alt="montre academy">
-                                <div>
-                                    <p>Monstre academy</p>
-                                    <img class="delete" src="assets/img/moins.svg" alt="bouton moins">
-                                </div>
-                                
-                            </div>
-                        </li>
-                        <li class="favorite">
-                            <div>
-                                <img src="assets/img/la belle et la bete.svg" alt="la belle et la bête">
-                                <div>
-                                    <p>la Belle et la Bête 2</p>
-                                    <img class="delete" src="assets/img/moins.svg" alt="bouton moins">
-                                </div>
-                            </div>
-                        </li>
-                        <li class="favorite">
-                            <div>
-                                <img src="assets/img/raiponse.svg" alt="raiponce">
-                                <div>
-                                    <p>Raiponce</p>
-                                    <img class="delete"src="assets/img/moins.svg" alt="bouton moins">
-                                </div>
-                            </div>
-                        </li>
-                        <li id="more">
-                            <p><a href="favoris.html">VOIR PLUS</a></p>
-                        </li>
-                    </div>
-                </ul>
-            </li>
-
-    </nav>
-    <!--Image d'accueil-->
-    <div>
-        <img id="home" src="assets/img/image d'accueil.svg" alt="page d'accueil du CineManu">
-    </div>
-</header>
-
+    <title>CinéManu</title>
+</head>
 <body>
-    <!--Ajout des films par catégorie-->
-    <section id="movies">
-        <h1 id="classiques">Les Classiques</h1>
-        <div class="posters">
-            <div class="movie">
-                <img src="assets/img/film1.svg" alt="la belle est le clochard">
-                <img src="assets/img/coeur.svg" alt="coeur">
-            </div>
-            <div class="movie">
-                <img src="assets/img/film2.svg" alt="le grinch">
-                <img src="assets/img/coeur.svg" alt="coeur">
-            </div>
-            <div class="movie">
-                <img src="assets/img/film3.svg" alt="garfield">
-                <img src="assets/img/coeur.svg" alt="coeur">
-            </div>
-        </div>
-        <h2 id="youth">Jeunesse</h2>
-        <div class="posters">
-            <div class="movie">
-                <img src="assets/img/film4.svg" alt="Ellian et le sortillège">
-                <img src="assets/img/coeur.svg" alt="coeur">
-            </div>
-            <div class="movie">
-                <img src="assets/img/film5.svg" alt="le robot sauvage">
-                <img src="assets/img/coeur.svg" alt="coeur">
-            </div>
-            <div class="movie">
-                <img src="assets/img/film6.svg" alt="dragon2">
-                <img src="assets/img/coeur.svg" alt="coeur">
-            </div>
-        </div>
-        <h2 id="disney">Disney</h2>
-        <div class="posters">
-            <div class="movie">
-                <img src="assets/img/film7.svg" alt="Vaiana2">
-                <img src="assets/img/coeur.svg" alt="coeur">
-            </div>
-            <div class="movie">
-                <img src="assets/img/film8.svg" alt="coco">
-                <img src="assets/img/coeur.svg" alt="coeur">
-            </div>
-            <div class="movie">
-                <img src="assets/img/film9.svg" alt="encanto">
-                <img src="assets/img/coeur.svg" alt="coeur">
-            </div>
-        </div>
-        <h2 id="family">Familial</h2>
-        <div class="posters">
-            <div class="movie">
-                <img src="assets/img/film10.svg" alt="Moi moche et mechant">
-                <img src="assets/img/coeur.svg" alt="coeur">
-            </div>
-            <div class="movie">
-                <img src="assets/img/film11.svg" alt="Les indestructibles">
-                <img src="assets/img/coeur.svg" alt="coeur">
-            </div>
-            <div class="movie">
-                <img src="assets/img/film12.svg" alt="Le lorax">
-                <img src="assets/img/coeur.svg" alt="coeur">
-            </div>
-        </div>
-        <h2 id="animated">Animé</h2>
-        <div class="posters">
-            <div class="movie">
-                <img src="assets/img/film13.svg" alt="Naruto">
-                <img src="assets/img/coeur.svg" alt="coeur">
-            </div>
-            <div class="movie">
-                <img src="assets/img/film14.svg" alt="Detective conan">
-                <img src="assets/img/coeur.svg" alt="coeur">
-            </div>
-            <div class="movie">
-                <img src="assets/img/film15.svg" alt="Dakaichi">
-                <img src="assets/img/coeur.svg" alt="coeur">
-            </div>
-        </div>
+    <nav>
+        <img onclick=witchlist() src="assets/img/logo cinémanu.svg" alt="logo cinemanu">
+        <ul>
 
-    </section>
+        </ul>
+        <!-- Menu burger pour les favoris -->
+        <img id="wishlist" onclick="menuWishlist()" src="assets/img/coeur.svg" alt="pictogramme favoris">
+        <div id="menuBox" style="display: none">
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam impedit itaque non, perferendis obcaecati adipisci omnis atque tempore quidem totam voluptatem quas laudantium autem quia neque. Blanditiis at quasi cumque!</p>
+        </div>
+    </nav>
+    <div id="movieList">
+        
+        
+    </div>
+    <h2>Les Classiques</h2>
+    <div id="movieClassique">
 
+    </div>
+    <h2>Disney</h2>
+    <div id="movieDisney">
+
+    </div>
+    <h2>Jeunesse</h2>
+    <div id="movieJeunesse">
+
+    </div>
+    <h2>Familial</h2>
+    <div id="movieFamilial">
+
+    </div>
+    <h2>Animé</h2>
+    <div id="movieAnime">
+
+    </div>
+    <script src="assets/js/newscript.js"></script>
 </body>
+
+</html>

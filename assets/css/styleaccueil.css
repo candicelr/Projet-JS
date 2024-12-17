@@ -10,8 +10,15 @@ body {
 }
 /* nav */
 #logo {
-    height: 30%;
-    width: 60%;
+    height: 70px;
+    width: 170px;
+    margin-right: 110px;
+    padding-left: 20px;
+}
+#wishlist{
+    padding-right: 20px;
+    width: 50px;
+    height: 50px;
 }
 /*Suppression des marges externes et interne de la nav.*/
 nav {
@@ -23,11 +30,15 @@ nav li a {
     color: #ffffff;
     text-decoration: none;
 }
+nav li a:hover{
+    font-weight: bold;
+}
+    
 /*Suppression des points de la liste, définition de la couleur d'arrière plan, de la hauteur et de la largeur de la barre de navigation.*/ 
 nav ul {
     list-style-type: none;
     background-color: #33058D;
-    height: 80px;
+    height: auto;
     width: 100%;
 }
 /*Placement des liens de la barre de navigation au centre de l'axe secondaire, espacé les uns des autres. Puis définition de leur taille et de leur marge interne et externe. Enfin, on fixe la barre de navigation à sa position et on rajoute un effet d'ombre.*/
@@ -58,7 +69,7 @@ nav ul li a{
 }
 /*Ajout d'une marge externe à gauche du picto like de la wishlist*/
 #wishlist{
-    margin-left: 80PX;
+    margin-left: 80px;
 }
 /*Définition de la couleur d'arrière blanc du bloc de la wishlist. Ajout d'une marge interne et d'une ombre.*/
 #list{
@@ -81,7 +92,6 @@ h1 {
     font-family: "Open Sans", sans-serif;
     margin-bottom: 60px;
 }
-
 h2 {
     margin-left: 9cqb;
     color: white;
@@ -123,4 +133,19 @@ h2 {
     border-radius: 10px;
     padding: 10px;
     font-size: 20px;
-    font-family
+    font-family: "Inter", sans-serif;
+}
+/*Placement du bouton voir plus.*/
+#more{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+    margin-top: -30px;
+}
+.posters .movie img:nth-child(2){
+    height: 50px;
+    width: 50px;
+}
+#movies .posters img:first-child{
+    margin-right: 10px;
+}
