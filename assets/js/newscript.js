@@ -32,7 +32,21 @@ async function allMovies() {
     console.error("Erreur lors de la récupération des films:", error);
   }
 }
- 
+
+// Pour aller sur la page films favoris en  cliquant sur "Voir Plus"
+const wishlist = (wishlistWindow) => {
+  wishlistWindow = window.open("witchlist.html");
+};
+// Fonction pour le menu burger du favori sur la page d'acceuil
+const menuWishlist = () => {
+  let menuBox = document.getElementById("menuBox");
+  if (menuBox.style.display == "block") {
+    menuBox.style.display = "none";
+  } else {
+    menuBox.style.display = "block";
+  }
+};
+
 // Fonction pour récupérer les détails d'un film
 async function chercheDetails(id) {
   try {
@@ -125,8 +139,6 @@ async function description(movieId) {
   container.appendChild(detailDiv);
 
 }
-
- 
  
 // Fonction pour gérer les likes
 function likes(movieId) {
@@ -207,7 +219,7 @@ async function displayMovieTrailers(movieId) {
     trailerContainer.appendChild(iframe);
   });
 }
- 
+
 // Charger les films au démarrage
 allMovies();
 

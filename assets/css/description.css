@@ -1,0 +1,179 @@
+body{
+    background-color: #33058D;
+}
+
+/*Ajout d'une marge interne en haut, et de la police inter sur le titre de la section description.*/
+#description .title {
+    display: flex;
+    padding-top: 80px;
+    font-family: "Inter", sans-serif;
+}
+
+/*Définition de la taille du bloc titre et ajout d'une marge interne à droite. Puis placement du bloc au ce tre de l apage.*/
+body .title div {
+    width: 100%;
+    padding-right: 200px;
+    display: flex;
+    justify-content: center;
+}
+/*Ajout de marges sur le picto: fleche de retour.*/
+.title img {
+    padding: 30px;
+    margin-left: 60px;
+    padding-top: 75px;
+}
+/*Placement du deuxième bloc de la section description au centre avec d'un côté l'affiche du film et de l'autre la description. Puis ajout d'une marge externe en bas*/
+.text {
+    display: flex;
+    justify-content: space-evenly;
+    justify-items: center;
+    margin-bottom: 80px;
+
+}
+/*Définition de la taille de l'affiche du film et ajout de marges internes.*/
+.text img {
+    padding-left: 50px;
+    padding-top: 40px;
+    height: 600px;
+    width: auto;
+}
+/*Définition de la taille, du style et des marges du bloc de description du film.*/
+.text .description {
+    background-color: #33058D;
+    height: 560px;
+    width: 400px;
+    margin-top: 40px;
+    padding: 20px;
+    padding-right: 40px;
+    padding-left: 40px;
+    color: aliceblue;
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+}
+/*Définition de la taille des étoiles*/
+.description img {
+    width: 150px;
+    height: auto;
+}
+/*Placement des étoiles et du bouton voir les avis au centre du bloc de description.*/
+.notice {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/*Ajout de marges internes et externes sur les étoiles.*/
+.notice img {
+    padding-right: 50px;
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+/*Définition du style du bouton voir les avis.*/
+.notice p {
+    margin-top: 20px;
+    background-color: #9238EC;
+    width: 150px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px white;
+}
+/*Ajout d'une couleur sur les liens et suppresssion du soulignement.*/
+a {
+    text-decoration: none;
+    color: aliceblue;
+}
+/*Le lien du bouton passe en gras lorsque la souris le survol./*/
+a:hover {
+    font-weight: bold;
+}
+/*Ajout de marge interne et externe sur la section résumé.*/
+#recap {
+    padding-left: 60px;
+    padding-right: 100px;
+    margin-bottom: 80px;
+}
+/*Défintion de la taille, du style et de la position du bloc de la section résumé.*/
+#recap div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #33058D;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    color: aliceblue;
+    font-size: 20px;
+    font-family: "Inter", sans-serif;
+}
+/*Passage du premier paragraphe du bloc résumé en gras.*/
+#recap p:first-child {
+    font-weight: bold;
+}
+/*Défintion de la taille du bloc de la section vidéo et placement du bloc au centre de la page. Puis ajout d'une marge externe en bas.*/
+#video div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: auto;
+    margin-bottom: 80px;
+}
+/*Défintion de la taille de la vidéo*/
+#video .video {
+    width: 1000px;
+    height: 700px;
+}
+/*Définition de la taille, du style et de la position du bloc avis des personnes de la section avis.*/
+#notice .person {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 60px;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    background-color: #33058D;
+    font-size: 20px;
+    color: aliceblue;
+}
+/*Placement des avis au centre, les uns en dessous des autres et ajout d'une marge interne à droite et à gauche.*/
+#notice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 80px;
+    padding-right: 80px;
+}
+/*Placement de la photo de profil, et du nom/prénom + les étoiles, côte à côte.*/
+#notice .profile {
+    display: flex;
+    padding-left: 20px;
+}
+/*Ajout d'une marge externe à droite de la photo de profil.*/
+#notice .profile img {
+    margin-right: 30px;
+}
+/*Ajout d'une marge interne à gauche et à droite du commentaire de chaque personne.*/
+#notice .text2 {
+    padding-left: 150px;
+    padding-right: 50px;
+}
+/*Défintion du style du bouton voir plus.*/
+#notice .button p {
+    margin-top: 20px;
+    background-color: #9238EC;
+    color: aliceblue;
+    width: 170px;
+    height: 40px;
+    display: flex;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+    margin-bottom: 80px;
+    border: solid 1px white;
+}
+/*Passage du paragraphe voir plus en gras au survol de la souris.*/
+#notice .button p:hover {
+    font-weight: bold;
+}
