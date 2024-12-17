@@ -33,51 +33,10 @@ async function allMovies() {
   }
 }
 
-// Pour aller sur la page films favoris en  cliquant sur "Voir Plus"
-const wishlist = (wishlistWindow) => {
-  wishlistWindow = window.open("witchlist.html");
-};
-// Fonction pour le menu burger du favori sur la page d'acceuil
-const menuWishlist = () => {
-  let menuBox = document.getElementById("menuBox");
-  if (menuBox.style.display == "block") {
-    menuBox.style.display = "none";
-  } else {
-    menuBox.style.display = "block";
-  }
-};
-
-// Fonction pour récupérer les détails d'un film
-async function chercheDetails(id) {
-  try {
-    const response = await fetch(
-      `${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=fr-FR`
-    );
- 
-    if (!response.ok) throw new Error(`Erreur API: ${response.status}`);
- 
-    const data = await response.json();
-    console.log(`Détails du film (${id}):`, data);
- 
-    return {
-      productionCompanies: data.production_companies,
-      releaseDate: data.release_date,
-      runtime: data.runtime,
-      originalLanguage: data.original_language,
-      voteAverage: data.vote_average,
-      voteCount: data.vote_count,
-      overview: data.overview,
-    };
-  } catch (error) {
-    console.error(`Erreur lors de la récupération des détails du film (${id}):`, error);
-    return null;
-  }
-}
-
-// Fonction pour afficher les films
+// Fonction qui nous permet d'afficher les films
 function displayMovies(movies) {
   const movieList = document.getElementById("movieList");
-  movieList.innerHTML = ""; // Nettoyer la liste
+  movieList.innerHTML = ""; // On nettoie la liste
  
   movies.forEach((movie) => {
     const div = document.createElement("div");
@@ -93,7 +52,7 @@ function displayMovies(movies) {
   });
 }
  
-// Fonction pour rediriger vers la page des détails d'un film
+// Fonction qui nous permet d'ouvrir la page des détails d'un film
 function goToMovieDetailsPage(movieId) {
   // Redirection vers une nouvelle page avec l'ID du film dans l'URL
   window.location.href = `movieDetails.html?movieId=${movieId}`;
@@ -118,63 +77,29 @@ async function description(movieId) {
 
   }
  
-  const container = document.getElementById("movieList");
- 
-  const detailDiv = document.createElement("div");
-
-  detailDiv.id = `details-${movieId}`;  // Ajouter un ID unique pour pouvoir gérer plusieurs films
-
-  detailDiv.classList.add("movie-details");
- 
-  detailDiv.innerHTML = `
-<h3>Détails du film</h3>
-<p><strong>Date de sortie:</strong> ${movieDetails.releaseDate}</p>
-<p><strong>Durée:</strong> ${movieDetails.runtime} minutes</p>
-<p><strong>Langue:</strong> ${movieDetails.originalLanguage}</p>
-<p><strong>Note moyenne:</strong> ${movieDetails.voteAverage}</p>
-<p><strong>Résumé:</strong> ${movieDetails.overview}</p>
-
-  `;
- 
   container.appendChild(detailDiv);
 
 }
  
-// Fonction pour gérer les likes
+// Fonction qui nous permet de changer la couleur du coeur au clique
 function likes(movieId) {
+//On crée une variable pour l'image coeur et on va chercher l'image dans le code grâce à son id
   const heartImage = document.getElementById(`favorite-${movieId}`);
+//On crée une variable pour l'image du coeur blanc
   const whiteHeart = "assets/img/coeur.svg";
+//On crée une variable pour l'image du coeur violet
   const purpleHeart = "assets/img/heartColor.svg";
- 
+//Si le coeur est blanc
   if (heartImage.src.includes(whiteHeart)) {
+//Alors on affiche le coeur violet au clique
     heartImage.src = purpleHeart;
+// Sinon on affiche le coeur blanc
   } else {
     heartImage.src = whiteHeart;
   }
 }
  
-// Fonction pour afficher les détails d'un film
-async function description(movieId) {
-  const movieDetails = await chercheDetails(movieId);
-  if (!movieDetails) return;
- 
-  const container = document.getElementById("movieList");
-  const detailDiv = document.createElement("div");
-  detailDiv.classList.add("movie-details");
- 
-  detailDiv.innerHTML = `
-<h3>Détails du film</h3>
-<p><strong>Date de sortie:</strong> ${movieDetails.releaseDate}</p>
-<p><strong>Durée:</strong> ${movieDetails.runtime} minutes</p>
-<p><strong>Langue:</strong> ${movieDetails.originalLanguage}</p>
-<p><strong>Note moyenne:</strong> ${movieDetails.voteAverage} (${movieDetails.voteCount} votes)</p>
-<p><strong>Résumé:</strong> ${movieDetails.overview}</p>
-  `;
- 
-  container.appendChild(detailDiv);
-}
- 
-// Fonction pour récupérer les bandes-annonces
+// Fonction qui nous permet de récupérer les bandes-annonces
 async function fetchMovieTrailers(movieId) {
   try {
     const response = await fetch(
@@ -223,7 +148,47 @@ async function displayMovieTrailers(movieId) {
 // Charger les films au démarrage
 allMovies();
 
-
+// // Fonction pour afficher les bandes-annonces
+// const Video = async (movieId) => {
+//   try {
+//     // On récupère dans une variable la fonction qui retourne les détails du film.
+//     const movieDetails = await getMovieDetails(movieId);  // Utilisation de await pour attendre la réponse.
+    
+//     // Vérification des détails récupérés
+//     console.log("Movie details:", movieDetails);  // Affichage des détails dans la console pour débogage.
+    
+//     // Si les détails du film ne sont pas disponibles, on arrête l'exécution.
+//     if (!movieDetails) {
+//       console.log("Détails du film non trouvés.");
+//       return;
+//     }
+    
+//     // Vérification du titre du film
+//     console.log("Titre du film:", movieDetails.title);  // Vérification du titre du film.
+    
+//     // Si le titre du film est "Vaina 2", on affiche la bande-annonce
+//     if (movieDetails.title === "Vaina 2") {
+//       const trailerContainer = document.getElementById("trailerContainer");
+      
+//       // Vérification de l'élément trailerContainer
+//       if (!trailerContainer) {
+//         console.log("Conteneur de bande-annonce non trouvé.");
+//         return;
+//       }
+      
+//       // Affichage de la vidéo
+//       trailerContainer.innerHTML = `
+//         <iframe width="560" height="315" src="https://www.youtube.com/embed/R80cjWvqtfA?si=sBOZa3SxDxk9VYit" 
+//           title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+//           referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+//       `;
+//     } else {
+//       console.log("Le titre du film ne correspond pas à 'Vaina 2'.");
+//     }
+//   } catch (error) {
+//     console.error("Erreur lors de l'affichage de la bande-annonce :", error);
+//   }
+// };
 
 
 
