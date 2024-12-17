@@ -1,26 +1,30 @@
 body{
-    background-color: #33058D;
+    background-color: #190245;
+    margin: 0%;
+    padding: 0%;
 }
 
 /*Ajout d'une marge interne en haut, et de la police inter sur le titre de la section description.*/
-#description .title {
-    display: flex;
-    padding-top: 80px;
-    font-family: "Inter", sans-serif;
-}
-
-/*Définition de la taille du bloc titre et ajout d'une marge interne à droite. Puis placement du bloc au ce tre de l apage.*/
-body .title div {
+h1 {
     width: 100%;
-    padding-right: 200px;
+    display: flex;
+    color: aliceblue;
+    margin-top: 100px;
+}
+/*Placement de la flèche et du titre à côté*/
+#title{
     display: flex;
     justify-content: center;
 }
-/*Ajout de marges sur le picto: fleche de retour.*/
-.title img {
+a{
+    margin-top: -75px;
+    width: 100%;
+}
+img {
     padding: 30px;
     margin-left: 60px;
     padding-top: 75px;
+    margin-top: 90px;
 }
 /*Placement du deuxième bloc de la section description au centre avec d'un côté l'affiche du film et de l'autre la description. Puis ajout d'une marge externe en bas*/
 .text {
@@ -28,7 +32,6 @@ body .title div {
     justify-content: space-evenly;
     justify-items: center;
     margin-bottom: 80px;
-
 }
 /*Définition de la taille de l'affiche du film et ajout de marges internes.*/
 .text img {
