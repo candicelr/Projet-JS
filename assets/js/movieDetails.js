@@ -44,20 +44,21 @@ async function displayMovieDetails() {
  
   const containerTitle = document.getElementById("title");
   const containerDescription = document.getElementById("description");
+  const containerRecap=document.getElementById("recap");
   containerTitle.innerHTML = `
-    <div id="title">
         <a href="index.html"><img src="assets/img/fleche_retour.svg" alt="fléche de retour"></a>
-        <h1>${movieDetails.title}</h1>
-    <div/>`
+        <h1>${movieDetails.title}</h1>`
 containerDescription.innerHTML=`
 
   <img src="${IMAGE_BASE_URL + movieDetails.poster_path}" alt="Affiche de ${movieDetails.title}">
-  <p><strong>Date de sortie:</strong> ${movieDetails.release_date}</p>
-  <p><strong>Durée:</strong> ${movieDetails.runtime} minutes</p>
-  <p><strong>Langue:</strong> ${movieDetails.original_language}</p>
-  <p><strong>Note moyenne:</strong> ${movieDetails.vote_average}</p>
-  <p><strong>Résumé:</strong> ${movieDetails.overview}</p>
-`;
+  <div>
+    <p><strong>Date de sortie:</strong> ${movieDetails.release_date}</p>
+    <p><strong>Durée:</strong> ${movieDetails.runtime} minutes</p>
+    <p><strong>Langue:</strong> ${movieDetails.original_language}</p>
+    <p><strong>Note moyenne:</strong> ${movieDetails.vote_average}</p>
+  </div>`
+containerRecap.innerHTML=`
+    <p><strong>Résumé:</strong> ${movieDetails.overview}</p>`;
 
 }
  
