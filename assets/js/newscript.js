@@ -96,60 +96,7 @@ const displayMovies = (movies) => {
            `;
     movieList.appendChild(div);
   });
-//   const div = document.createElement("div");
-//   const movieClassique = document.getElementById("movieClassique");
-//   div.innerHTML = "";
-//   let compteurClassique = 0;
-//   if (compteurClassique < 3){
-//    if (movies.vote_average > 8){
-//      movies.forEach((movie) => {
-//        div.innerHTML = `
-//        <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${movie.title}">
-//        <img onclick="likes()" src="assets/img/coeur.svg" alt="pictogramme coeur">
-//        `;
-//      movieClassique.appendChild(div);
-//      });
-//    };
-//    compteurClassique++
-//   };
-
-// // Affichage catégorie Jeunesse et Familial
-//  const movieJeunesse = document.getElementById("movieJeunesse");
-//  const movieFamilial = document.getElementById("movieFamilial");
-//  div.innerHTML = "";
-//  div.innerHTML = "";
-//  let compteurJeunesse = 0 ;
-//  let compteurFamilial = 0;
-//  if (compteurJeunesse < 3){
-//    for (let i=0; i< (movies.genre_ids).length; i++ ){
-//      if (movies.genre_ids[i] === 10751){
-//          movies.forEach((movie)=> {
-//          div.innerHTML = `
-//          <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${movie.title}">
-//          <img onclick="likes()" src="assets/img/coeur.svg" alt="pictogramme coeur">
-//          `;
-//          movieJeunesse.appendChild(div)
-//        });
-//      };
-//    };
-//    compteurJeunesse++
-//  }
-//  else if (compteurFamilial < 3){
-//    for (let i=0; i< (movies.genre_ids).length; i++ ){
-//      if (movies.genre_ids[i] === 10751){
-//          movies.forEach((movie)=> {
-//          div.innerHTML = `
-//          <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${movie.title}">
-//          <img onclick="likes()" src="assets/img/coeur.svg" alt="pictogramme coeur">
-//          `;
-//          movieFamilial.appendChild(div)
-//        });
-//      };
-//    };
-//    compteurFamilial++
-//  };
 };
-
 // // Fonction pour le menu burger du favori sur la page d'acceuil
 // const menuWishlist = () => {
 //   let menuBox = document.getElementById("menuBox");
@@ -159,6 +106,7 @@ const displayMovies = (movies) => {
 //     menuBox.style.display = "block";
 //   }
 // };
+
 let listWishMovies = [];  // Liste des films favoris
 
 // Fonction pour gérer le changement de couleur du cœur et ajouter/supprimer des films de la liste des favoris
@@ -186,6 +134,7 @@ const likes = (movieId) => {
       console.log("Film ajouté aux favoris:", movie);
     }
   };
+  console.log("ma wishlist",listWishMovies)
 
   // Fonction pour retirer un film de la liste des favoris
   const removeFromWishlist = (movieId) => {
@@ -201,11 +150,9 @@ const likes = (movieId) => {
     }
   });
 }
+
 // Fonction pour aller à la page des favoris
 const wishlist = () => {
   localStorage.setItem('wishlist', JSON.stringify(listWishMovies)); // Sauvegarder la wishlist dans le localStorage
   window.location.href = 'wishlist.html'; // Aller à la page des favoris
 };
-
-// Appel à la fonction pour charger les films
-allMovies();
