@@ -14,7 +14,7 @@
         <!--Barre de navigation-->
         <nav id="navigation">
             <ul>
-                <li><img id="logo" src="assets/img/logo cinémanu.svg" alt="logo cinemanu"></li>
+                <li><a href="index.html"><img id="logo" src="assets/img/logo cinémanu.svg" alt="logo cinemanu"></li></a>
                 <li><a href="index.html#classiques">Populaires</a></li>
                 <li><a href="index.html#youth">Jeunesse</a></li>
                 <li><a href="index.html#disney">Disney</a></li>
@@ -23,80 +23,85 @@
                 <li> <img id="wishlist" onclick="menuWishlist()" src="assets/img/coeur.svg" alt="pictogramme favoris">
                 </li>
             </ul>
-            <main>
-                <div id="movieDetailsContainer">
-                    <div id="title"></div>
-                    <section id="description">
-                         
-                    </section>
-                    <section id="recap"></section>
-                    <!-- Ici les détails du film seront affichés -->
-                </div>
-                <div id="trailerContainer"></div>
+        </nav>
+        <main>
+            <!--Ajout du bloc de détails des films.-->
+            <div id="movieDetailsContainer">
+            <!--Ajout du bloc qui contient l'affiche et le titre du film.-->
+                <div id="title"></div>
+                <!--Ajout du bloc qui contient les informations des films.-->
+                <section id="description">
 
-                <!--Section avis-->
-                <section id="notice">
-                    <h2>Les avis</h2>
-                    <div class="person">
-                        <div class="profile">
-                            <!--Photo de profil-->
-                            <img src="assets/img/pp.svg" alt="photo de profil">
-                            <div class="text1">
-                                <!--Prénom de la personne-->
-                                <p>Morgane .J</p>
-                                <!--Note qu'il a donné au film-->
-                                <img src="assets/img/5etoiles.svg" alt="5 etoiles">
-                            </div>
-                        </div>
-                        <!--commentaire de la personne-->
-                        <div class="text2">
-                            <p>Honnêtement, j'ai adoré les musiques sont entraînantes, restent dans la tête ! Les images
-                                et
-                                les paysages sont magnifiques.</p>
-                        </div>
-                    </div>
-                    <div class="person">
-                        <div class="profile">
-                            <img src="assets/img/pp.svg" alt="photo de profil">
-                            <div class="text1">
-                                <p>Elliot .M</p>
-                                <img src="assets/img/étoiles.svg" alt="4 etoiles">
-                            </div>
-                        </div>
-                        <div class="text2">
-                            <p>Je l'ai trouvé meilleur que le premier volume !</p>
-                        </div>
-                    </div>
-                    <div class="person">
-                        <div class="profile">
-                            <img src="assets/img/pp.svg" alt="photo de profil">
-                            <div class="text1">
-                                <p>Anna. A</p>
-                                <img src="assets/img/5etoiles.svg" alt="5 etoiles">
-                            </div>
-                        </div>
-                        <div class="text2">
-                            <p>Très bon film je le recommande !</p>
-                        </div>
-                    </div>
-                    <div class="person">
-                        <div class="profile">
-                            <img src="assets/img/pp.svg" alt="photo de profil">
-                            <div class="text1">
-                                <p>Clara .P</p>
-                                <img src="assets/img/3etoile.svg" alt="3 etoiles">
-                            </div>
-                        </div>
-                        <div class="text2">
-                            <p>Vous ne verrez jamais un si beau film, la forme est fabuleuse. Mais le fond est un peu
-                                juste... En maniaque de Disney je le regrette un peu</p>
-                        </div>
-                    </div>
-                    </div>
                 </section>
-            </main>
+                <!--Ajout du bloc qui contient le résumé des films.-->
+                <section id="recap"></section>
+            </div>
+            <!--Ajout du bloc de la bande annonce des films.-->
+            <div id="trailerContainer"></div>
 
-<script src="assets/js/movieDetails.js"></script>
+            <!--Section avis-->
+            <section id="notice">
+                <h2>Les avis</h2>
+                <div class="person">
+                    <div class="profile">
+                        <!--Photo de profil-->
+                        <img src="assets/img/pp.svg" alt="photo de profil">
+                        <div class="text1">
+                            <!--Prénom de la personne-->
+                            <p>Morgane .J</p>
+                            <!--Note qu'il a donné au film-->
+                            <img src="assets/img/5etoiles.svg" alt="5 etoiles">
+                        </div>
+                    </div>
+                    <!--commentaire de la personne-->
+                    <div class="text2">
+                        <p>Honnêtement, j'ai adoré les musiques sont entraînantes, restent dans la tête ! Les images
+                            et
+                            les paysages sont magnifiques.</p>
+                    </div>
+                </div>
+                <div class="person">
+                    <div class="profile">
+                        <img src="assets/img/pp.svg" alt="photo de profil">
+                        <div class="text1">
+                            <p>Elliot .M</p>
+                            <img src="assets/img/étoiles.svg" alt="4 etoiles">
+                        </div>
+                    </div>
+                    <div class="text2">
+                        <p>Je l'ai trouvé meilleur que le premier volume !</p>
+                    </div>
+                </div>
+                <div class="person">
+                    <div class="profile">
+                        <img src="assets/img/pp.svg" alt="photo de profil">
+                        <div class="text1">
+                            <p>Anna. A</p>
+                            <img src="assets/img/5etoiles.svg" alt="5 etoiles">
+                        </div>
+                    </div>
+                    <div class="text2">
+                        <p>Très bon film je le recommande !</p>
+                    </div>
+                </div>
+                <div class="person">
+                    <div class="profile">
+                        <img src="assets/img/pp.svg" alt="photo de profil">
+                        <div class="text1">
+                            <p>Clara .P</p>
+                            <img src="assets/img/3etoile.svg" alt="3 etoiles">
+                        </div>
+                    </div>
+                    <div class="text2">
+                        <p>Vous ne verrez jamais un si beau film, la forme est fabuleuse. Mais le fond est un peu
+                            juste... En maniaque de Disney je le regrette un peu</p>
+                    </div>
+                </div>
+                </div>
+            </section>
+        </main>
+
+        <script src="assets/js/movieDetails.js"></script>
 </body>
 
 </html>

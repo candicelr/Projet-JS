@@ -1,13 +1,13 @@
+// On récupère les paramètres de l'URL.
 const urlParams = new URLSearchParams(window.location.search);
-
+// Récupère la valeur du paramètre "movieId" dans l'URL.
 const movieId = urlParams.get('movieId');
  
-// URL de base de l'API
-
+// URL de l'API.
 const BASE_URL = "https://api.themoviedb.org/3";
-
+//Affiches des films de l'API.
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w200";
-
+//Ajout de la clé API.
 const API_KEY = "ddcf0bf3717e635e5e6832d2cab2fcdf";
  
 // Fonction qui nous permet de récupérer les détails d'un film
@@ -15,21 +15,20 @@ const API_KEY = "ddcf0bf3717e635e5e6832d2cab2fcdf";
 async function getMovieDetails(id) {
 
   try {
-
+     // Requête http pour récupérer les détails du film avec l'ID.
     const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=fr-FR`);
-
+    // Si la réponse est inccorect, on lance une erreur
     if (!response.ok) throw new Error(`Erreur API: ${response.status}`);
-
+    //On converti la réponse en JSON pour pouvoir accéder aux données.
     const data = await response.json();
-
+    // On retourne les données des films récupérées dans l'API
     return data;
 
   } catch (error) {
-
+    //En cas d'erreur, on affiche un message d'erreur.
     console.error("Erreur lors de la récupération des détails du film :", error);
-
+    // Retourne null si une erreur survient
     return null;
-
   }
 }
 // Fonction qui nous permet d'afficher les détails du film
