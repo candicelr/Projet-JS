@@ -97,6 +97,7 @@ const displayMovies = (movies) => {
     movieList.appendChild(div);
   });
 };
+
 // // Fonction pour le menu burger du favori sur la page d'acceuil
 // const menuWishlist = () => {
 //   let menuBox = document.getElementById("menuBox");
@@ -106,7 +107,6 @@ const displayMovies = (movies) => {
 //     menuBox.style.display = "block";
 //   }
 // };
-
 let listWishMovies = [];  // Liste des films favoris
 
 // Fonction pour gérer le changement de couleur du cœur et ajouter/supprimer des films de la liste des favoris
@@ -150,7 +150,6 @@ const likes = (movieId) => {
     }
   });
 }
-
 // Fonction pour aller à la page des favoris
 const wishlist = () => {
   localStorage.setItem('wishlist', JSON.stringify(listWishMovies)); // Sauvegarder la wishlist dans le localStorage
