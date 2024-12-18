@@ -60,6 +60,7 @@ containerDescription.innerHTML=`
     <p><strong>Durée:</strong> ${movieDetails.runtime} minutes</p>
     <p><strong>Langue:</strong> ${movieDetails.original_language}</p>
     <p><strong>Note moyenne:</strong> ${movieDetails.vote_average}</p>
+    <a id="button" href="#notice"><p>Voir les avis</p></a>
   </div>`
 //Enfin on rajoute le resumé du film.
 containerRecap.innerHTML=`
