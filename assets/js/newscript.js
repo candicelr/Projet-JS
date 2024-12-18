@@ -1,161 +1,145 @@
 const API_KEY = "ddcf0bf3717e635e5e6832d2cab2fcdf";
 const BASE_URL = "https://api.themoviedb.org/3";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w200";
- 
-const categories = [
-  { name: "Walt Disney Pictures", value: 2 },
-  { name: "movieClassique", value: 0 },
-  { name: "movieJeunesse", value: 2 },
-  { name: "movieFamilial", value: 3 },
-  { name: "movieAnime", value: 4 },
-];
- 
-const myGlobalMovieList = [];
- 
-// Fonction pour récupérer les films récents
+
+let myGlobalMovieList = [];
+let listWishMovies = []; // Liste des films favoris
+
+// Fonction qui nous permet de récupérer les détails d'un film
+const chercheDetails = async (id) => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=fr-FR`
+    );
+    const data = await response.json();
+    return data.production_companies; // Retourne les compagnies de production
+  } catch (error) {
+    console.error("Erreur lors de la récupération des détails :", error);
+    return null;
+  }
+};
+
+// Fonction qui permet de rajouter des détails sur les films dans la liste
+const detailMovieList = async (movies) => {
+  for (let i = 0; i < movies.length; i++) {
+    const details = await chercheDetails(movies[i].id);
+    if (details) {
+      movies[i].production_companies = details;
+    }
+  }
+  return movies;
+};
+
+// Fonction qui permet de récupérer les films récents et de genre animation
 async function allMovies() {
   try {
     const response = await fetch(
       `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=fr-FR&page=1&with_genres=16`
     );
- 
-    if (!response.ok) throw new Error(`Erreur API: ${response.status}`);
- 
     const data = await response.json();
-    console.log("Films récupérés:", data);
- 
-    // Affiche les films récupérés
-    displayMovies(data.results);
-    // Sauvegarde dans myGlobalMovieList
-    myGlobalMovieList.push(...data.results);
-  } catch (error) {
-    console.error("Erreur lors de la récupération des films:", error);
-  }
-}
-allMovies()
- 
-//Détail à rajouter dans myGlobalMovieList
- 
-const chercheDetails = async (id) => {
-  try {
-    const response2 = await fetch(
-      `${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=fr-FR`
-    );
-    const data2 = await response2.json();
-    console.log(data2);
-    let myObj = {};
-    // Récupérer dans myObj les infos de data qui nous intéressent
- 
-    myObj.product = [...data2.production_companies];
-    console.log("mes données", myObj);
-    return myObj;
+
+    if (response.status === 200) {
+      myGlobalMovieList = data.results;
+      myGlobalMovieList = await detailMovieList(myGlobalMovieList);
+      displayMovies(myGlobalMovieList);
+    }
   } catch (error) {
     console.error("Erreur lors de la récupération des films :", error);
   }
-};
-console.log(chercheDetails(1241982));
- 
-// Fonction qui permet d'utiliser la compagnie du film
-const detailMovieList =(aaa)=>{
-  for(thisMovie of aaa){
-    let thisMovieDetail = chercheDetails(thisMovie.id);
-    aaa[thisMovie] = thisMovieDetail
-  }
 }
-// detailMovieList(allMovies())
+
+// Fonction qui nous permet d'afficher les films par catégories.
 const displayMovies = (movies) => {
-  for (category of categories) {
-    thisCategoryName = category.name;
-    thisCategoryMovies = movies.filter((e) =>
-      e.genre_ids.includes(category.value)
-    );
-    //J'ai ma liste de films de la catégorie Animation
-    for (thisMovie of thisCategoryMovies) {
-      //Pour chaque film, j'appelle la fonction chercheDetail(movie)
-      let myMovie = detailMovieList(thisMovie);
-    }
+  const moviePopulaire = document.getElementById("moviePopulaires");
+  const movieDisney = document.getElementById("movieDisney");
+  const movieJeunesse = document.getElementById("movieJeunesse");
+  const movieFamilial = document.getElementById("movieFamilial");
+  const movieAnime = document.getElementById("movieAnime");
+
+  if (!moviePopulaire || !movieDisney || !movieJeunesse || !movieFamilial || !movieAnime) {
+    console.error("Les conteneurs HTML requis pour les catégories de films sont manquants.");
+    return;
   }
- 
-  for (thisMovie of movies) {
-    const movieGenreId = movies.genre_ids;
-  }
- 
-  const movieList = document.getElementById("movieList");
-  movieList.innerHTML = ""; // Nettoyer la liste avant d'ajouter les films
- 
-  movies.forEach((movie) => {
-    const div = document.createElement("div");
-    div.classList.add("movie-item");
-    div.innerHTML = `
-             <img id="${movie.id}" class="affiche" onclick="goToMovieDetailsPage(${movie.id})" src="${IMAGE_BASE_URL + movie.poster_path}" alt="Affiche de ${
-      movie.title
-    }">
-           <img class="favorite" id="${movie.id}" onclick="likes(${
-      movie.id
-    })" src="assets/img/coeur.svg" alt="pictogramme coeur">
-           `;
-    movieList.appendChild(div);
+
+  // Réinitialisation des conteneurs HTML.
+  moviePopulaire.innerHTML = "";
+  movieDisney.innerHTML = "";
+  movieJeunesse.innerHTML = "";
+  movieFamilial.innerHTML = "";
+  movieAnime.innerHTML = "";
+
+  // Catégories de films:
+  const categories = [
+    { element: moviePopulaire, filter: (movie) => movie.vote_average > 8 },
+    { element: movieDisney, filter: (movie) => movie.production_companies.some((company) => company.id === 2) },
+    { element: movieJeunesse, filter: (movie) => movie.genre_ids.includes(10751) && movie.genre_ids.includes(28) },
+    { element: movieFamilial, filter: (movie) => movie.genre_ids.includes(10751) && movie.genre_ids.includes(14) },
+    { element: movieAnime, filter: (movie) => movie.original_language === "ja" }
+  ];
+
+  // Afficher les films dans chaque catégorie
+  categories.forEach((category) => {
+    const filteredMovies = movies.filter(category.filter).slice(0, 3);
+    filteredMovies.forEach((movie) => {
+      const div = document.createElement("div");
+      div.innerHTML = `
+        <img 
+          src="${IMAGE_BASE_URL + movie.poster_path}" 
+          alt="Affiche de ${movie.title}" 
+          onclick="viewMovieDetails(${movie.id})"
+          style="cursor: pointer;"
+        >
+        <img 
+          src="assets/img/coeur.svg" 
+          alt="Pictogramme coeur" 
+          onclick="likes(event, ${movie.id})" 
+          style="cursor: pointer;"
+        >
+      `;
+      category.element.appendChild(div);
+    });
   });
- 
 };
 
-let listWishMovies = [];  // Liste des films favoris
- 
-// Fonction pour gérer le changement de couleur du cœur et ajouter/supprimer des films de la liste des favoris
-const likes = (movieId) => {
-  // Fonction qui change la couleur du cœur et gère l'ajout/suppression de films des favoris
-  const changeColorHeart = (image, movieId) => {
-    const whiteHeart = "assets/img/coeur.svg";
-    const colorHeart = "assets/img/heartColor.svg";
-   
-    // Si le cœur est blanc, on le met en violet (ajout aux favoris)
-    if (image.src.includes(whiteHeart)) {
-      image.src = colorHeart;
-      addToWishlist(movieId);  // Ajout du film à la liste des favoris
-    } else {
-      image.src = whiteHeart;
-      removeFromWishlist(movieId);  // Retrait du film de la liste des favoris
-    }
-  };
- 
-  // Fonction pour ajouter un film à la liste des favoris
-  const addToWishlist = (movieId) => {
-    const movie = myGlobalMovieList.flat().find(movie => movie.id === movieId);  // Recherche le film dans la liste globale
-    if (movie && !listWishMovies.includes(movie)) {  // Si le film n'est pas déjà dans les favoris
-      listWishMovies.push(movie);  // Ajouter à la liste des favoris
-      console.log("Film ajouté aux favoris:", movie);
-    }
-  };
-  console.log("ma wishlist",listWishMovies)
- 
-  // Fonction pour retirer un film de la liste des favoris
-  const removeFromWishlist = (movieId) => {
-    listWishMovies = listWishMovies.filter(movie => movie.id !== movieId);  // Filtrer pour retirer le film
-    console.log("Film retiré des favoris:", movieId);
-  };
- 
-  // Recherche tous les cœurs sur la page et change la couleur du cœur correspondant au film cliqué
-  const heartIcons = document.querySelectorAll(".favorite");
-  heartIcons.forEach((icon) => {
-    if (icon.id == movieId) {  // Trouver l'icône du cœur du film cliqué
-      icon.addEventListener("click", () => changeColorHeart(icon, movieId));
-    }
-  });
-}
- 
-// Fonction pour aller à la page des favoris
-const wishlist = () => {
-  localStorage.setItem('wishlist', JSON.stringify(listWishMovies)); // Sauvegarder la wishlist dans le localStorage
-  window.location.href = 'wishlist.html'; // Aller à la page des favoris
-};
- 
-// Fonction qui nous permet d'ouvrir la page des détails d'un film
-function goToMovieDetailsPage(movieId) {
-  // Redirection vers une nouvelle page avec l'ID du film dans l'URL
+// Fonction qui permet d'afficher les détails d'un film au clic.
+const viewMovieDetails = (movieId) => {
+  // Naviguer vers une autre page ou afficher les détails
   window.location.href = `movieDetails.html?movieId=${movieId}`;
-}
- // Mettre à jour le localStorage
- localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+};
+
+// Gestion des favoris avec changement de couleur du cœur lorsqu'on clique dessus
+const likes = (event, movieId) => {
+  event.stopPropagation(); // Empêche les clics de se propager
+
+  const movie = myGlobalMovieList.find((movie) => movie.id === movieId);
+  if (!movie) return;
+
+  // On trouve l'image du cœur
+  const heartIcon = event.target;
+
+  const index = listWishMovies.findIndex((item) => item.id === movieId);
+  if (index === -1) {
+    // Ajouter le film aux favoris
+    listWishMovies.push(movie);
+    console.log("Film ajouté aux favoris:", movie);
+    // Changer l'image du cœur en violet
+    heartIcon.src = "assets/img/heartColor.svg";
+  } else {
+    // Retirer le film des favoris
+    listWishMovies.splice(index, 1);
+    console.log("Film retiré des favoris:", movie);
+    // Revenir à l'image du cœur blanc
+    heartIcon.src = "assets/img/coeur.svg";
+  }
+  localStorage.setItem("wishlist", JSON.stringify(listWishMovies));
+};
+
+
+// Charger les films au démarrage
+document.addEventListener("DOMContentLoaded", allMovies);
+
+
+ 
 
 
 

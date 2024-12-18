@@ -167,6 +167,12 @@ if (movieDetails.title=="Les Démons d'argile"){
   <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/AYLec_KREwc?si=U3JOpBYqWmjPjkI0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   `
 };
+if (movieDetails.title=="Garfield : Héros malgré lui"){
+  containerTrailer.innerHTML=`
+  <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/ednK3czgrr0?si=n2saRdQLrJLrgi-V" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  `
+};
+
 }
  
 // Charger les détails du film au chargement de la page

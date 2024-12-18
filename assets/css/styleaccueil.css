@@ -85,67 +85,44 @@ nav ul li a{
 }
 /*Défintion du style des titres.*/
 h1 {
-    margin-top: 100px;
-    margin-left: 90px;
+    margin-top: 150px;
+    margin-left: 130px;
     color: white;
     font-size: 30px;
     font-family: "Open Sans", sans-serif;
-    margin-bottom: 60px;
+    margin-bottom: 80px;
 }
 h2 {
-    margin-left: 9cqb;
+    margin-left: 130px;
     color: white;
     font-size: 30px;
     font-family: "Open Sans", sans-serif;
     margin-bottom: 60px;
+    margin-bottom: 80px;
+    margin-top: 80px;
 }
-/*Définition de la taille, de la couleur et de la position du bloc de la wishlist*/
-#menuBox{
-    height: 100px;
-    width: 600px;
-    background-color: #33058D;
-    transform: translateX(-60%);
+.film {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 80px;
+}
+.film img:first-child{
+    width: 280px;
+    height: auto;
+    margin-right: 20px;
+}
 
-}
-/*Placement des informations de la wishlist*/
-.favorite{
-    display: flex;
-    margin-bottom: 50px;
-}
-.favorite div{
-    width: 1000px;
-    display: flex;
-}
-.more p{
+
+/*Définition du style du footer.*/
+footer{
     background-color: #33058D;
-}
-.delete{
-    width: 50px;
-    margin-left: 30px;
-}
-/*Définition du style du bouton voir plus.*/
-#more a{
-    background-color: #9238EC;
-    width: 140px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
+    color: #ffffff;
+    height: 60px;
     padding: 10px;
-    font-size: 20px;
-    font-family: "Inter", sans-serif;
 }
-/*Placement du bouton voir plus.*/
-#more{
+/*Placement du paragraphe du footer au centre de la page.*/
+footer p{
     display: flex;
     justify-content: center;
-    margin-bottom: 60px;
-    margin-top: -30px;
-}
-.posters .movie img:nth-child(2){
-    height: 50px;
-    width: 50px;
-}
-#movies .posters img:first-child{
-    margin-right: 10px;
+    font-family: "Inter", sans-serif;
 }
