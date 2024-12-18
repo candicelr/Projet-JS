@@ -42,8 +42,7 @@ const removeFromWishlist = (movieId) => {
   // Réafficher la wishlist
   displayWishlist();
 };
- 
- 
+
 // Charger les favoris au démarrage
 document.addEventListener("DOMContentLoaded", displayWishlist);
  

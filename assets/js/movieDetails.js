@@ -31,7 +31,6 @@ async function getMovieDetails(id) {
     return null;
 
   }
-
 }
 // Fonction qui nous permet d'afficher les détails du film
 

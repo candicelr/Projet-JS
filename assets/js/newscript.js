@@ -98,16 +98,7 @@ const displayMovies = (movies) => {
   });
  
 };
- 
-// // Fonction pour le menu burger du favori sur la page d'acceuil
-// const menuWishlist = () => {
-//   let menuBox = document.getElementById("menuBox");
-//   if (menuBox.style.display == "block") {
-//     menuBox.style.display = "none";
-//   } else {
-//     menuBox.style.display = "block";
-//   }
-// };
+
 let listWishMovies = [];  // Liste des films favoris
  
 // Fonction pour gérer le changement de couleur du cœur et ajouter/supprimer des films de la liste des favoris
@@ -163,7 +154,8 @@ function goToMovieDetailsPage(movieId) {
   // Redirection vers une nouvelle page avec l'ID du film dans l'URL
   window.location.href = `movieDetails.html?movieId=${movieId}`;
 }
- 
+ // Mettre à jour le localStorage
+ localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
 
 
 
