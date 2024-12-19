@@ -33,8 +33,8 @@ h1 {
 
 /*Ajout d'une marge interne et externe sur le picto flèche.*/
 #back {
-    margin-left: 60px;
-    padding-top: 75px;
+    margin-left: 80px;
+    padding-top: 130px;
     margin-top: 60px;
 }
 
@@ -192,4 +192,133 @@ h1 {
 
 h2 {
     padding-right: 150px;
+}
+
+/*Partie mobile*/
+@media screen and (max-width:1024px) {
+    /* main {
+        justify-content: center;
+        align-items: center;
+    } */
+
+    li .remove {
+        display: none;
+    }
+
+    li a:first-child {
+        margin: 0;
+        padding: 0;
+        width: 200px;
+    }
+
+    li {
+        display: flex;
+        justify-content: none;
+    }
+
+    #back img {
+        width: 50px;
+        height: 50px;
+    }
+
+    #back {
+        padding: 20px;
+        margin: 0%
+    }
+
+    #title {
+        margin-top: 70px;
+        margin-bottom: 0%;
+    }
+
+    h1 {
+        font-size: 10px;
+        flex-wrap: wrap;
+        margin-top: 80px;
+    }
+
+    #description {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 80px;
+        margin: 30px;
+    }
+
+    #description img {
+        width: 300px;
+        height: auto;
+        margin-top: 0%;
+    }
+
+    #description div {
+        width: 200px;
+        height: 500px;
+        font-size: 15px;
+        margin-bottom: 50px;
+    }
+
+    #button {
+        padding: 0%;
+    }
+
+    #recap {
+        padding: 0%;
+    }
+
+    #recap div {
+        width: 250px;
+    }
+
+    .video {
+        width: 300px;
+        height: 200px;
+    }
+    .profile .text1{
+        flex-direction: column;
+        height: 140px;
+    }
+    .profile img:first-child {
+        width: 50px;
+        padding:0;
+        margin-left: -90px;
+    }
+
+    .profile img:last-child {
+        width: 80px;
+        margin-top: 0;
+    }
+    #notice .text1 p{
+        padding-top: 60px;
+        padding-right: 40px;
+    }
+    #notice h2 {
+        margin: 0%;
+        width: 100%;
+        display: flex;
+        margin-bottom: 50px;
+        margin-top: -50px;
+    }
+
+    #notice {
+        justify-content: center;
+        padding: 40px;
+        width: 80%;
+    }
+
+    .person {
+        padding: 0%;
+        margin-bottom: 50px;
+        width: 90%;
+    }
+
+    #notice .text1 {
+        padding: 0%;
+    }
+
+    #notice .text2 {
+        padding: 0%
+    }
+
 }

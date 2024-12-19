@@ -126,3 +126,58 @@ footer p{
     justify-content: center;
     font-family: "Inter", sans-serif;
 }
+/*Partie mobile*/
+@media screen and (max-width:1024px){
+    li .remove {
+        display: none;
+    }
+    main img{
+        margin-top: 50px;
+    }
+    div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .film img:first-child{
+        width: 180px;
+        height: auto;
+        margin-right: 20px;
+        
+    }
+    div div{
+        display: flex;
+        flex-direction: row;
+    }
+    .film img:last-child{
+        padding-top: 200px;
+        width: 40px;
+        height: 40px;
+    }
+    h1{
+        display: flex;
+        justify-content: center;
+        margin: 0%;
+        padding: 0%;
+        margin-top: 50px;
+        margin-right: 70px;
+    }
+    h2{
+        display: flex;
+        justify-content: center;
+        margin: 0%;
+        padding: 0%;
+        margin-top: 50px;
+        margin-right: 140px;
+    }
+    li:first-child{
+        margin:0;
+        padding: 0;
+        width:250px;
+    }
+    li{
+        display: flex;
+        justify-content: none;
+    }
+    
+}
