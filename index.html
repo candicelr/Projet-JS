@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/styleaccueil.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<title>CinéManu</title>
+</head>
+
+<body>
+    <header>
+        <!--Barre de navigation-->
+        <nav id="navigation">
+            <ul>
+                <li><img id="logo" src="assets/img/logo cinémanu.svg" alt="logo cinemanu"></li>
+                <li><a href="#moviePopulaires">Populaires</a></li>
+                <li><a href="#movieDisney">Jeunesse</a></li>
+                <li><a href="#movieJeunesse">Disney</a></li>
+                <li><a href="#movieFamilial">Familial</a></li>
+                <li><a href="#movieAnime">Animé</a></li>
+                <li><a href="wishlist.html"><img id="wishlist" src="assets/img/coeur.svg" onclick="wishlist()"
+                            alt="pictogramme favoris"></a>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!--Image d'accueil-->
+        <div>
+            <img id="home" src="assets/img/image d'accueil.svg" alt="page d'accueil du CineManu">
+        </div>
+        <!--Ajout de la liste des films.-->
+        <div id="movieList"></div>
+        <!--Ajout des différentes catégories de films.-->
+        <h1>Populaires</h1>
+        <div class="film" id="moviePopulaires">
+
+        </div>
+        <h2>Disney</h2>
+        <div class="film" id="movieDisney">
+
+        </div>
+        <h2>Jeunesse</h2>
+        <div class="film" id="movieJeunesse">
+
+        </div>
+        <h2>Familial</h2>
+        <div class="film" id="movieFamilial">
+
+        </div>
+        <h2>Animé</h2>
+        <div class="film" id="movieAnime">
+
+        </div>
+    </main>
+    <!--Ajout d'un footer-->
+    <footer>
+        <p>Site réalisé par Paul,Candice,Océane et Garance</p>
+    </footer>
+    <script src="assets/js/newscript.js"></script>
+</body>
+
+</html>

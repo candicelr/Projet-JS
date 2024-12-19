@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/styleaccueil.css">
+    <link rel="stylesheet" href="assets/css/wishlist.css">
+    <title>Mes Favoris</title>
+</head>
+
+<body>
+    <header>
+        <!--Barre de navigation-->
+        <nav id="navigation">
+            <ul>
+                <li><a href="index.html"><img id="logo" src="assets/img/logo cinémanu.svg" alt="logo cinemanu"></li></a>
+                <li><a href="index.html#classiques">Populaires</a></li>
+                <li><a href="index.html#youth">Jeunesse</a></li>
+                <li><a href="index.html#disney">Disney</a></li>
+                <li><a href="index.html#family">Familial</a></li>
+                <li><a href="index.html#animated">Animé</a></li>
+                <li> <img id="wishlist" onclick="menuWishlist()" src="assets/img/coeur.svg" alt="pictogramme favoris">
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Films favoris</h1>
+        <!-- Liste des films favoris affichés ici -->
+        <div id="wishlistContainer"></div>
+    </main>
+    <script src="assets/js/wishlist.js"></script>
+</body>
+
+</html>
