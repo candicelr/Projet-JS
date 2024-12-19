@@ -87,8 +87,8 @@ const displayMovies = (movies) => {
   const categories = [
     { element: moviePopulaire, filter: (movie) => movie.vote_average > 8 },
     { element: movieDisney, filter: (movie) => movie.production_companies.some((company) => company.id === 2) },
-    { element: movieJeunesse, filter: (movie) => movie.genre_ids.includes(10751) && movie.genre_ids.includes(28) },
-    { element: movieFamilial, filter: (movie) => movie.genre_ids.includes(10751) && movie.genre_ids.includes(14) },
+    { element: movieJeunesse, filter: (movie) => movie.genre_ids.includes(10751) && movie.genre_ids.includes(14) },
+    { element: movieFamilial, filter: (movie) => movie.genre_ids.includes(10751) && movie.genre_ids.includes(28) },
     { element: movieAnime, filter: (movie) => movie.original_language === "ja" }
   ];
 
